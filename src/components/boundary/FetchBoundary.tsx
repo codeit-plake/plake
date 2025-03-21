@@ -10,7 +10,7 @@ const FetchBoundary = ({
   fallback,
 }: PropsWithChildren<{ fallback: React.ReactNode }>) => {
   return (
-    <ErrorBoundary errorComponent={({ reset }) => FetchError({ reset })}>
+    <ErrorBoundary errorComponent={({ reset }) => <FetchError reset={reset} />}>
       <Suspense fallback={fallback}>{children}</Suspense>
     </ErrorBoundary>
   );

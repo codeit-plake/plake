@@ -33,7 +33,7 @@ const MyCardList = () => {
 
   return (
     <>
-      {list.map((gathering, index) => (
+      {filteredList.map((gathering, index) => (
         <MyCardItem
           key={gathering.id}
           id={gathering.id}

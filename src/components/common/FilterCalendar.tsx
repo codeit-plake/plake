@@ -18,13 +18,13 @@ import { Calendar } from "../ui/Calendar";
 interface IFilterCalendarProps {
   selectedDate: string | null;
   setSelectedDate: React.Dispatch<React.SetStateAction<string | null>>;
-  disableType?: "afterToday" | undefined;
+  disabledType?: "afterToday" | undefined;
 }
 
 const FilterCalendar = ({
   selectedDate,
   setSelectedDate,
-  disableType,
+  disabledType,
 }: IFilterCalendarProps) => {
   const { setSearchParams } = useCustomSearchParams();
 
@@ -72,7 +72,7 @@ const FilterCalendar = ({
             mode="single"
             selected={date}
             onDayClick={setDate}
-            fromDate={disableType === "afterToday" ? new Date() : undefined}
+            fromDate={disabledType === "afterToday" ? new Date() : undefined}
             initialFocus
             locale={ko}
           />

@@ -22,7 +22,7 @@ const ParticipantAvatarStack = ({ id }: IParticipantAvatarStackProps) => {
   return (
     <div className="flex -space-x-3">
       {slicedData?.map(({ User }: { User: IUser }) => (
-        <div key={User.id} className="hover:z-10">
+        <div key={User.id} className="hover:z-20">
           <Avatar type="default" size="small" imgPath={User.image} />
         </div>
       ))}

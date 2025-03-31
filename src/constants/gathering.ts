@@ -14,7 +14,7 @@ export const GATHERING_FORM: CreateGatheringFormType = {
   type: "",
   dateTime: "",
   registrationEnd: "",
-  capacity: 0,
+  capacity: null,
 } as const;
 
 export const SERVICE_LIST = {

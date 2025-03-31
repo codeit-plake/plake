@@ -1,27 +1,28 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useShallow } from "zustand/shallow";
 
-import CreateGatheringModal from "@/components/modals/create-gathering-modal/CreateGatheringModal";
 import { Button } from "@/components/ui/Button";
 import useModalStore from "@/stores/useModalStore";
 import useUserStore from "@/stores/useUserStore";
 
 const CreateGatheringModalWrapper = () => {
   const router = useRouter();
-  const openConfirm = useModalStore(state => state.openConfirm);
+  const { openConfirm, openCreateGathering } = useModalStore(
+    useShallow(state => ({
+      openConfirm: state.openConfirm,
+      openCreateGathering: state.openCreateGathering,
+    })),
+  );
   const user = useUserStore(state => state.user);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const onClickButton = () => {
-    if (user) setIsOpen(true);
+    if (user) openCreateGathering();
     else {
       openConfirm(
-        "로그인이 필요한 서비스입니다. 로그인 후 이용해주세요.",
-        () => {
-          router.replace("/login");
-        },
+        "로그인이 필요한 서비스입니다.\n로그인 페이지로 이동하시겠습니까?",
+        () => router.replace("/login"),
       );
     }
   };
@@ -35,7 +36,6 @@ const CreateGatheringModalWrapper = () => {
       >
         모임 만들기
       </Button>
-      <CreateGatheringModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
 };

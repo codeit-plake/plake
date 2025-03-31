@@ -4,8 +4,13 @@ const capacitySchema = z
   .number({
     message: "모임 정원을 입력해주세요.",
   })
-  .min(5, { message: "최소 5명 이상이어야 합니다." })
-  .max(20, { message: "최대 20명까지 가능합니다." });
+  .nullable()
+  .refine(
+    (val): val is number | null => val === null || (val >= 5 && val <= 20),
+    {
+      message: "모임 정원은 5명에서 20명 사이여야 합니다.",
+    },
+  );
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "모임 이름을 입력해주세요." }),

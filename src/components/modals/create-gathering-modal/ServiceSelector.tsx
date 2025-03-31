@@ -21,6 +21,7 @@ const ServiceSelector = ({
 
   const handleServiceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id } = e.target;
+
     setSelectedService(id);
 
     if (id === SERVICE_LIST.ONLINE.value) {
@@ -29,6 +30,7 @@ const ServiceSelector = ({
       setSelectedSubService("");
     } else {
       setLocationValue("");
+      setTypeValue("");
     }
   };
 

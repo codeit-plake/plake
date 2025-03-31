@@ -29,7 +29,7 @@ const GatheringReviewBoard = ({ id }: IGatheringReviewBoardProps) => {
   };
 
   return (
-    <section className="flex h-full min-h-[100vh] flex-col justify-between gap-10 border-t-2 border-gray-200 bg-white p-6 pb-28 md:pb-20">
+    <section className="flex h-full min-h-[60vh] flex-col gap-10 border-t-2 border-gray-200 bg-white p-6 pb-28 md:pb-20">
       <GatheringReviewList reviews={data.pages[0].data} />
       <Pagination
         totalPage={data.pages[0].totalPages}

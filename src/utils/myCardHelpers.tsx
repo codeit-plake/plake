@@ -40,9 +40,9 @@ export const getStatusProps = (gathering: IMyGathering): StatusProps[] => {
 };
 
 export const getButtonType = (gathering: IMyGathering): MyCardActionType => {
-  if (!gathering.isCompleted) {
-    return "cancel";
-  }
+  // if (!gathering.isCompleted) {
+  //   return "cancel";
+  // }
 
   if (gathering.isReviewed) {
     return "viewReview";

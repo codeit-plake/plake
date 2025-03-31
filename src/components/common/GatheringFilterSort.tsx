@@ -43,7 +43,7 @@ const GatheringFilterSort = () => {
         <FilterCalendar
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
-          disableType={"afterToday"}
+          disabledType={"afterToday"}
         />
       </div>
       <div>

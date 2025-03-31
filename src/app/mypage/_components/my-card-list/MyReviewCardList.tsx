@@ -15,7 +15,7 @@ const MyReviewCardList = () => {
   const { data, hasNextPage, fetchNextPage, status } =
     useSuspenseMyGatheringList({
       reviewed: "false",
-      completed: "true",
+      // completed: "true",
       sortBy: "dateTime",
       sortOrder: "desc",
     });

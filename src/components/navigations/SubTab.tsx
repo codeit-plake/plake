@@ -22,7 +22,7 @@ const SubTab = () => {
   const href = pathname === OFFLINE_PATH ? OFFLINE_PATH : ONLINE_PATH;
 
   return (
-    <div className="align-center flex gap-2">
+    <div className="flex items-center gap-2">
       {SUB_TAB[isOffline ? "OFFLINE" : "ONLINE"].map((tab, i) => (
         <Link href={tab.value ? `?type=${tab.value}` : href} key={i}>
           <Button

@@ -42,7 +42,7 @@ const FavoriteList = () => {
 
   return (
     <>
-      <div className="mt-8 flex flex-col items-center justify-center gap-6">
+      <div className="mb-8 flex flex-col items-center justify-center gap-6">
         {favoriteData &&
           favoriteData.map((card: IGathering) => (
             <MainCardItem

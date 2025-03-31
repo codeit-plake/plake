@@ -44,7 +44,7 @@ const MainCardItem = ({
   const progressPercentage = (participantCount / capacity) * 100; //전체 모임 정원 중 모임 참여자의 비율
 
   const today = dayjs();
-  const isOpend = dayjs(registrationEnd).isAfter(today); // 모임오픈 여부 (모임이 종료되지 않았을 경우: true)
+  const isOpened = dayjs(registrationEnd).isAfter(today); // 모임오픈 여부 (모임이 종료되지 않았을 경우: true)
 
   return (
     <article className="relative w-full">
@@ -62,13 +62,13 @@ const MainCardItem = ({
             sizes="(max-width: 768px) 50vw"
             priority={firstPage}
           ></Image>
-          {isOpend && <DeadlineTag registrationEnd={registrationEnd} />}
+          {isOpened && <DeadlineTag registrationEnd={registrationEnd} />}
         </div>
         <div className="flex w-full flex-col items-center justify-center gap-7 p-4">
           <div className="flex w-full items-center justify-between">
             <div className="flex flex-col items-start justify-center gap-2">
               <div className="flex items-center justify-center">
-                <p className="max-h-[30px] max-w-[190px] overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold text-gray-800 md:max-w-[400px]">
+                <p className="max-h-[30px] max-w-[190px] overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold text-gray-800 md:max-w-[300px]">
                   {name}
                 </p>
                 <RxDividerVertical className="text-gray-900" />
@@ -106,7 +106,7 @@ const MainCardItem = ({
             </div>
           </div>
         </div>
-        {!isOpend && (
+        {!isOpened && (
           <>
             <div className="absolute z-20 flex h-full w-full flex-col items-center justify-center bg-black/80 text-sm text-white">
               <span>{"마감된 챌린지에요,"}</span>

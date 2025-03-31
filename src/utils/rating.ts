@@ -49,7 +49,9 @@ export const createRatingHandler = ({
     if (!isEditable || !onRatingChange) return;
 
     const { rect, x } = getBoundingRect(event);
-    const newRating = calculateHalfHeart(x, rect.width, baseIndex);
+    const rawRating = calculateHalfHeart(x, rect.width, baseIndex);
+
+    const newRating = Math.ceil(rawRating);
     onRatingChange(newRating);
   };
 };

@@ -18,10 +18,12 @@ const ConfirmAlertModal = () => {
     })),
   );
 
+  if (type !== "confirm" && type !== "alert") return null;
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} variant="alert">
       <div className="flex w-full flex-col items-center gap-6">
-        <p className="text-sm font-medium text-gray-900 md:text-base">
+        <p className="whitespace-pre-wrap text-center text-sm font-medium text-gray-900 md:text-base">
           {title}
         </p>
         <div

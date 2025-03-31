@@ -10,7 +10,7 @@ const NavTab = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="align-center flex gap-3">
+    <nav className="flex items-center gap-3">
       {MYPAGE_NAV_ITEMS.map(tab => {
         const isActive = pathname === tab.href;
 

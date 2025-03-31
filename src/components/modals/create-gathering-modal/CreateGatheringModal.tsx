@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, useWatch } from "react-hook-form";
+import { useShallow } from "zustand/shallow";
 
 import Dropdown from "@/components/common/Dropdown";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
@@ -18,32 +19,33 @@ import {
   CreateGatheringFormSchema,
   CreateGatheringFormType,
 } from "@/schemas/gatheringSchema";
+import useModalStore from "@/stores/useModalStore";
 import { createFormDataFromObject } from "@/utils/form";
 
 const labelTitleStyle = "text-base font-semibold text-gray-800";
 const errorMsgStyle = "text-sm font-semibold text-red-600";
 
-interface CreateGatheringModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-const CreateGatheringModal = ({
-  isOpen,
-  onClose,
-}: CreateGatheringModalProps) => {
+const CreateGatheringModal = () => {
   const {
     register,
     handleSubmit,
     setValue,
     getValues,
     control,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
     defaultValues: GATHERING_FORM,
     resolver: zodResolver(CreateGatheringFormSchema),
   });
+
+  const { type, isOpen, onClose } = useModalStore(
+    useShallow(state => ({
+      type: state.type,
+      isOpen: state.isOpen,
+      onClose: state.onClose,
+    })),
+  );
 
   const location = useWatch({
     control,
@@ -59,6 +61,8 @@ const CreateGatheringModal = ({
 
     onClose();
   };
+
+  if (type !== "createGathering") return null;
 
   return (
     <Modal
@@ -84,11 +88,17 @@ const CreateGatheringModal = ({
           <section className="flex flex-col gap-2">
             <Label className={labelTitleStyle}>선택 서비스</Label>
             <ServiceSelector
-              setTypeValue={value => setValue("type", value)}
-              setLocationValue={value => setValue("location", value)}
+              setTypeValue={value =>
+                setValue("type", value, { shouldValidate: true })
+              }
+              setLocationValue={value =>
+                setValue("location", value, { shouldValidate: true })
+              }
             />
             {errors.type && (
-              <span className={errorMsgStyle}>{errors.type.message}</span>
+              <p role="alert" className={errorMsgStyle}>
+                {errors.type.message}
+              </p>
             )}
           </section>
           {location !== SERVICE_LIST.ONLINE.location && (
@@ -102,7 +112,9 @@ const CreateGatheringModal = ({
                 }
               />
               {errors.location && (
-                <span className={errorMsgStyle}>{errors.location.message}</span>
+                <p role="alert" className={errorMsgStyle}>
+                  {errors.location.message}
+                </p>
               )}
             </section>
           )}
@@ -114,7 +126,9 @@ const CreateGatheringModal = ({
               }
             />
             {errors.image && (
-              <span className={errorMsgStyle}>{errors.image.message}</span>
+              <p role="alert" className={errorMsgStyle}>
+                {errors.image.message}
+              </p>
             )}
           </section>
 
@@ -129,9 +143,9 @@ const CreateGatheringModal = ({
             registrationEndValue={getValues("registrationEnd")}
           />
           {(errors.dateTime || errors.registrationEnd) && (
-            <span className={errorMsgStyle}>
+            <p role="alert" className={errorMsgStyle}>
               {errors?.dateTime?.message || errors?.registrationEnd?.message}
-            </span>
+            </p>
           )}
           <section>
             <Input
@@ -144,7 +158,12 @@ const CreateGatheringModal = ({
             />
           </section>
         </div>
-        <Button variant="purple" className="w-full" type="submit">
+        <Button
+          variant="purple"
+          className="w-full"
+          type="submit"
+          disabled={!isValid}
+        >
           {isPending ? <LoadingSpinner size="xs" /> : "확인"}
         </Button>
       </form>

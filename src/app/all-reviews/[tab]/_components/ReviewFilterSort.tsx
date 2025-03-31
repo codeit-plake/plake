@@ -41,7 +41,7 @@ const ReviewFilterSort = () => {
         <FilterCalendar
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
-          disableType={"afterToday"}
+          disabledType={"afterToday"}
         />
       </div>
       <div>

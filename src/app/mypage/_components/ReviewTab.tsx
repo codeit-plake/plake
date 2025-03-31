@@ -27,7 +27,7 @@ const ReviewTab = () => {
   };
 
   return (
-    <div className="align-center mt-4 flex gap-2">
+    <div className="mt-4 flex items-center gap-2">
       {MY_REVIEW_TAB.map(tab => (
         <Button
           key={tab.value}

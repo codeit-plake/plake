@@ -20,6 +20,7 @@ const MyCreateCardList = ({ userId }: MyCreateCardListProps) => {
     useSuspenseGatheringInfiniteList("all", params);
 
   const list = data.pages.flat() ?? [];
+  const filteredList = list.filter(gathering => gathering.canceledAt === null);
 
   const onIntersect: IntersectionObserverCallback = ([{ isIntersecting }]) => {
     if (isIntersecting && hasNextPage) {
@@ -29,7 +30,7 @@ const MyCreateCardList = ({ userId }: MyCreateCardListProps) => {
 
   const { setTarget } = useIntersectionObserver({ onIntersect });
 
-  if (!list.length) {
+  if (!filteredList.length && !hasNextPage) {
     return <EmptyState message={EMPTY_MESSAGE.mypage.gatherings} />;
   }
 

@@ -24,6 +24,8 @@ export const useCreateGathering = () => {
       });
 
       router.push(`/gathering/detail/${gatheringId}`);
+
+      useModalStore.getState().onClose();
     },
     onError: error => {
       console.error("모임 생성 실패:", error);

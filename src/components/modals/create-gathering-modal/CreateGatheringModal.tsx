@@ -58,8 +58,6 @@ const CreateGatheringModal = () => {
   const onSubmit = (data: CreateGatheringFormType) => {
     const formData = createFormDataFromObject(data);
     handleCreateGathering(formData);
-
-    onClose();
   };
 
   if (type !== "createGathering") return null;

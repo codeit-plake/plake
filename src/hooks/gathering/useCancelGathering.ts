@@ -24,7 +24,7 @@ export const useCancelGathering = (id: string) => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.GATHERING.all],
       });
-      router.push("/gathering/offline");
+      router.back();
     },
     onError: () => {
       openAlert("잠시 후 다시 시도해주세요.");

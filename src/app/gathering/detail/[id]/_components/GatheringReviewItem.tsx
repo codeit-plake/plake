@@ -22,7 +22,7 @@ const GatheringReviewItem = ({ review }: IGatheringReviewItemProps) => {
             {User.name}
           </span>
 
-          <time className="text-gray-500">
+          <time className="text-gray-500" suppressHydrationWarning>
             {dayjs(createdAt).format("YYYY.MM.DD")}
           </time>
         </p>

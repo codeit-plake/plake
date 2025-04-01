@@ -26,7 +26,7 @@ const MyCardAction = ({ type, id }: MyCardActionProps) => {
     return (
       <Button
         variant="purple-outline"
-        className="h-10 w-[120px]"
+        className="h-10 w-fit"
         onClick={e => {
           e.preventDefault();
           openConfirm("참여를 취소하시겠습니까?", () => {
@@ -43,7 +43,7 @@ const MyCardAction = ({ type, id }: MyCardActionProps) => {
     return (
       <Button
         variant="purple"
-        className="h-10 w-[120px]"
+        className="h-10 w-fit"
         onClick={e => {
           e.preventDefault();
           router.push("/mypage/reviews?type=written");
@@ -57,7 +57,7 @@ const MyCardAction = ({ type, id }: MyCardActionProps) => {
   return (
     <Button
       variant="purple"
-      className="h-10 w-[120px]"
+      className="h-10 w-fit"
       onClick={e => {
         e.preventDefault();
         openCreateReview(id);

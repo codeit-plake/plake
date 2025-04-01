@@ -5,7 +5,7 @@ import { IMainReview } from "@/types/review/main-review";
 export const mainReviewList: IMainReview[] = [
   {
     id: uuidv4(),
-    content: `많은 사람들과 함께 \n 좋아하는 것을 즐길 수 있어 \n 좋았어요.`,
+    content: `많은 사람들과 함께 \n 좋아하는 것을 즐길 수 있어 \n 좋았어요`,
     rating: 5,
   },
   {

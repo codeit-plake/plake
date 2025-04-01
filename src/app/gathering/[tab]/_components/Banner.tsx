@@ -12,7 +12,7 @@ const Banner = () => {
         />
         <div>
           <p className="text-sm">{"함께 할 사람이 없나요?"}</p>
-          <p className="text-2xl font-bold text-[#292929]">
+          <p className="text-xl font-bold text-[#292929] sm:text-2xl">
             {"지금 모임에 참여해보세요"}
           </p>
         </div>

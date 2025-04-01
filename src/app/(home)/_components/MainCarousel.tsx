@@ -19,7 +19,7 @@ interface IMainCarouselProps {
 const MainCarousel = ({ type, data }: IMainCarouselProps) => {
   return (
     <section className="flex w-full flex-col gap-5">
-      <p className="text-2xl font-bold text-gray-900">
+      <p className="text-xl font-bold text-gray-900 md:text-2xl">
         {type === "popular" ? "현재 인기 많은 모임" : "곧 시작되는 모임"}
       </p>
       <div className="flex">

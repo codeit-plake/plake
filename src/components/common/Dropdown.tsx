@@ -41,10 +41,10 @@ const Dropdown = ({
     >
       <SelectTrigger
         className={cn(
-          "min-w-[110px] justify-between rounded-xl bg-white",
+          "w-full min-w-[110px] justify-between rounded-xl bg-white px-3",
           type === "form"
-            ? "w-full border-gray-50 bg-gray-50 data-[placeholder]:text-gray-400"
-            : "w-[110px] bg-white data-[placeholder]:text-gray-800",
+            ? "border-gray-50 bg-gray-50 data-[placeholder]:text-gray-400"
+            : "bg-white data-[placeholder]:text-gray-800",
         )}
       >
         {type === "sort" && <TbArrowsSort size={18} />}
@@ -52,6 +52,14 @@ const Dropdown = ({
         {type !== "sort" && <IoMdArrowDropdown size={16} color="black" />}
       </SelectTrigger>
       <SelectContent className="w-full min-w-[110px] rounded-xl bg-white text-black">
+        {type === "default" && (
+          <SelectItem
+            value="전체"
+            className="h-[32px] cursor-pointer rounded-xl px-2 py-1.5 pl-2 text-sm focus:bg-purple-100"
+          >
+            {"전체"}
+          </SelectItem>
+        )}
         {option?.map((option, i) => (
           <SelectItem
             key={`option-${i}`}

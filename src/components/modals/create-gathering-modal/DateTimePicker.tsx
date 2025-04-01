@@ -71,7 +71,7 @@ const DateTimePicker = ({
         {type === "dateTime" ? "모임 날짜" : "마감 날짜"}
       </Label>
       <div className="flex items-center justify-between rounded-lg bg-gray-50 px-4 py-[10px]">
-        <time className="font-medium text-gray-400">
+        <time className="font-medium text-gray-400" suppressHydrationWarning>
           {displayValue ? displayValue : "날짜를 선택해주세요"}
         </time>
         <FaRegCalendar

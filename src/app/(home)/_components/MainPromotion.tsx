@@ -13,7 +13,7 @@ const MainPromotion = ({ type }: IMainPromotionProps) => {
   return (
     <section
       className={clsx(
-        "flex w-full flex-col gap-16 md:gap-0",
+        "flex w-full flex-col gap-24 md:gap-0",
         type === "offline" ? "md:flex-row" : "md:flex-row-reverse",
       )}
     >
@@ -24,7 +24,7 @@ const MainPromotion = ({ type }: IMainPromotionProps) => {
           <MainAnimation type="online" />
         )}
       </div>
-      <div className="flex flex-1 flex-col items-center justify-center gap-14 whitespace-pre-wrap text-center text-3xl font-bold leading-10 md:text-4xl md:font-extrabold md:leading-[60px]">
+      <div className="flex flex-1 flex-col items-center justify-center gap-14 whitespace-pre-wrap text-center text-3xl font-bold leading-[50px] md:text-4xl md:font-extrabold md:leading-[60px]">
         {type === "offline" ? (
           <p>{"많은 사람들과 모여 \n 시간을 보내고 싶으신가요?"}</p>
         ) : (

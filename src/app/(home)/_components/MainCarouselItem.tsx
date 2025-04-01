@@ -20,7 +20,7 @@ const MainCarouselItem = ({ gathering }: IMainCarouselItemProps) => {
           src={gathering.image || "/images/gathering_default.png"}
           alt="carousel-item"
           fill
-          sizes="60vw"
+          sizes="(max-width: 768px) 150px, (max-width: 1024px) 240px, 260px"
           className="object-cover transition-all duration-300 hover:scale-110"
         />
       </div>

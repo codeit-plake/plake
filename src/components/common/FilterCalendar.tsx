@@ -56,7 +56,7 @@ const FilterCalendar = ({
         <PopoverTrigger asChild>
           <Button
             variant={"outline"}
-            className="w-[110px] min-w-[110px] rounded-xl bg-white px-3 py-2 hover:bg-white"
+            className="w-full min-w-[110px] rounded-xl bg-white py-2 hover:bg-white"
           >
             <span className="text-sm font-normal text-gray-800">
               {selectedDate || "날짜 전체"}

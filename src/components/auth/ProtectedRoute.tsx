@@ -17,7 +17,7 @@ const ProtectedRoute = () => {
 
   // 로그아웃 처리 함수
   const handleLogout = () => {
-    openAlert("로그인이 필요한 서비스입니다. 로그인 후 이용해주세요.");
+    openAlert("로그인이 필요한 서비스입니다.\n로그인 후 이용해주세요.");
     logout();
     router.replace("/login");
   };

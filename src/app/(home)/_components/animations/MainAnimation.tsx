@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { memo } from "react";
 
 import offlineAnimation from "@/assets/animations/offline.json";
 import onlineAnimation from "@/assets/animations/online.json";
@@ -11,7 +12,7 @@ interface IMainAnimationProps {
   type: "online" | "offline";
 }
 
-const MainAnimation = ({ type }: IMainAnimationProps) => {
+const MainAnimation = memo(({ type }: IMainAnimationProps) => {
   return (
     <Lottie
       animationData={type === "online" ? onlineAnimation : offlineAnimation}
@@ -21,6 +22,8 @@ const MainAnimation = ({ type }: IMainAnimationProps) => {
       style={{ maxWidth: "500px" }}
     />
   );
-};
+});
+
+MainAnimation.displayName = "MainAnimation";
 
 export default MainAnimation;

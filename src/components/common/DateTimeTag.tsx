@@ -21,12 +21,17 @@ const DateTimeTag = ({ size = "medium", date }: IDateTimeTagProps) => {
 
   return (
     <div className="flex gap-2">
-      <time aria-label="날짜" className={clsx("text-black", baseStyle(size))}>
+      <time
+        aria-label="날짜"
+        className={clsx("text-black", baseStyle(size))}
+        suppressHydrationWarning
+      >
         {dateText}
       </time>
       <time
         aria-label="시간"
         className={clsx("text-purple-600", baseStyle(size))}
+        suppressHydrationWarning
       >
         {timeText}
       </time>

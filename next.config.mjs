@@ -13,6 +13,7 @@ const nextConfig = {
         pathname: "**",
       },
     ],
+    formats: ["image/avif", "image/webp"],
   },
   async redirects() {
     return [

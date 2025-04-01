@@ -6,12 +6,11 @@ interface MyCardContentProps {
   children: ReactNode;
 }
 
-const MyCardContent = ({ hasAction, children }: MyCardContentProps) => {
+const MyCardContent = ({ children }: MyCardContentProps) => {
   return (
     <div
       className={clsx(
-        "flex min-w-0 flex-col justify-between sm:h-auto sm:flex-1",
-        hasAction && "h-[152px]",
+        "flex h-full min-w-0 flex-col justify-between gap-4 sm:h-auto sm:flex-1",
       )}
     >
       {children}

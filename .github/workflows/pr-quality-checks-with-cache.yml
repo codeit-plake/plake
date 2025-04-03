@@ -27,14 +27,6 @@ jobs:
         with:
           node-version: 22
 
-      - name: Cache npm dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Install dependencies
         run: npm ci
 
@@ -46,14 +38,6 @@ jobs:
 
       - name: Run Tests
         run: npm test
-
-      - name: Cache Storybook build
-        uses: actions/cache@v3
-        with:
-          path: node_modules/.cache/storybook
-          key: ${{ runner.os }}-storybook-${{ hashFiles('**/*.[jt]s', '**/*.json') }}
-          restore-keys: |
-            ${{ runner.os }}-storybook-
 
       - name: Build Storybook
         run: npm run build-storybook

@@ -37,7 +37,7 @@ class AnonGatheringService extends Service {
   }
 
   getFavoriteList(params: IFavoriteFilterParams) {
-    const ids = params.id.length > 0 ? params.id.join(",") : "";
+    const ids = params.id?.length > 0 ? params.id.join(",") : "";
 
     if (ids) {
       return this.http.get<IGathering[]>(`/gatherings?limit=30${`&id=${ids}`}`);

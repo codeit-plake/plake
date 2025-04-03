@@ -10,6 +10,9 @@ export type IFavoriteFilterParams = {
   id: Array<string>;
 };
 
+export interface IfavoriteAll {
+  favoriteAll: IFavorite;
+}
 export interface IFavorite {
   [key: string]: Array<string>;
 }

@@ -41,7 +41,7 @@ const favoriteListQueryOption = (
   filterByValue: string,
   params: IFavoriteFilterParams,
 ) => ({
-  queryKey: [QUERY_KEYS.FAVORITE.listByFilterValue(filterByValue)],
+  queryKey: [QUERY_KEYS.FAVORITE.listByFilterValue(filterByValue, params)],
   queryFn: () => {
     return anonGatheringService.getFavoriteList(params);
   },

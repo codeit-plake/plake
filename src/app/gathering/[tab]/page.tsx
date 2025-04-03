@@ -3,22 +3,31 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 
 import FetchBoundary from "@/components/boundary/FetchBoundary";
 import MainCardList from "@/components/layout/MainCardList";
 import MainCardListSkeleton from "@/components/skeletons/MainCardListSkeleton";
-// import { prefetchGateringInfiniteList } from "@/hooks/gathering/useGatheringInfiniteList";
+import { prefetchGateringInfiniteList } from "@/hooks/gathering/useGatheringInfiniteList";
 import { MainTab, MainTabSchema } from "@/types/gathering/main-tab";
+import { updateGatheringParams } from "@/utils/gatheringFilterParams";
 
 type PageProps = {
-  params: Promise<{
+  params: {
     tab: MainTab;
-  }>;
+    location: string;
+    date: string;
+    sort: string;
+    type: string;
+  };
 };
 
 const Page = async ({ params }: PageProps) => {
-  const { tab } = await params;
+  const { tab, location, date, sort, type } = params;
+
+  const headersList = headers(); //custom x-url header
+  const headerPathname = headersList.get("x-pathname") || "";
 
   const queryClient = new QueryClient();
 
@@ -28,13 +37,19 @@ const Page = async ({ params }: PageProps) => {
     notFound();
   }
 
-  //수정 예정
-  //await prefetchGateringInfiniteList(queryClient, tab);
+  const filteredParams = updateGatheringParams(headerPathname, {
+    location,
+    date,
+    sort,
+    type,
+  });
+
+  await prefetchGateringInfiniteList(queryClient, tab, filteredParams);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <FetchBoundary fallback={<MainCardListSkeleton />}>
-        <MainCardList tab={tab} />
+        <MainCardList tab={tab} filteredParams={filteredParams} />
       </FetchBoundary>
     </HydrationBoundary>
   );

@@ -2,6 +2,10 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
+  // 현재의 request url을 custom header에 저장
+  const requestHeaders = new Headers(req.headers);
+  requestHeaders.set("x-pathname", req.nextUrl.pathname);
+
   const token = req.cookies.get("authToken")?.value;
 
   // 토큰 없으면 401 응답
@@ -12,7 +16,12 @@ export function middleware(req: NextRequest) {
     );
   }
 
-  return NextResponse.next();
+  return NextResponse.next({
+    request: {
+      // 새로운 request headers 적용
+      headers: requestHeaders,
+    },
+  });
 }
 
 // 인증이 필요한 API 경로에만 동작하도록 설정

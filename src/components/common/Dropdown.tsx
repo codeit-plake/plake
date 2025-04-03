@@ -41,15 +41,17 @@ const Dropdown = ({
     >
       <SelectTrigger
         className={cn(
-          "w-full min-w-[110px] justify-between rounded-xl bg-white px-3",
+          "w-full justify-between rounded-xl bg-white px-3 md:min-w-[110px]",
           type === "form"
             ? "border-gray-50 bg-gray-50 data-[placeholder]:text-gray-400"
             : "bg-white data-[placeholder]:text-gray-800",
         )}
       >
-        {type === "sort" && <TbArrowsSort size={18} />}
+        {type === "sort" && <TbArrowsSort size={18} className="mr-2.5" />}
         <SelectValue placeholder={`${placeholder || "지역 전체"}`} />
-        {type !== "sort" && <IoMdArrowDropdown size={16} color="black" />}
+        {type !== "sort" && (
+          <IoMdArrowDropdown size={16} color="black" className="ml-2.5" />
+        )}
       </SelectTrigger>
       <SelectContent className="w-full min-w-[110px] rounded-xl bg-white text-black">
         {type === "default" && (

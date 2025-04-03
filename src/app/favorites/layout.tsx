@@ -1,3 +1,4 @@
+import FavoriteBanner from "./_components/FavoriteBanner";
 import FavoriteFilterTab from "./_components/FavoriteFilterTab";
 
 const GatheringFavoriteLayout = ({
@@ -7,6 +8,7 @@ const GatheringFavoriteLayout = ({
 }) => {
   return (
     <div className="base-wrap">
+      <FavoriteBanner />
       <div className="mt-8 flex justify-between">
         <FavoriteFilterTab />
       </div>

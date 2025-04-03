@@ -1,6 +1,8 @@
 import { IGatheringFilterParams } from "@/types/gathering";
 import { TReviewQueryParams } from "@/types/review";
 
+import { IFavoriteFilterParams } from "./favorite";
+
 const AUTH_ALL = "auth" as const;
 const GATHERING_ALL = ["gathering"] as const;
 const REVIEW_ALL = ["review"] as const;
@@ -34,7 +36,7 @@ export const QUERY_KEYS = {
   },
   FAVORITE: {
     all: FAVORITE_ALL,
-    listByFilterValue: (filterByValue: string) =>
-      [...FAVORITE_ALL, "list", filterByValue] as const,
+    listByFilterValue: (filterByValue: string, params: IFavoriteFilterParams) =>
+      [...FAVORITE_ALL, "list", filterByValue, params] as const,
   },
 };

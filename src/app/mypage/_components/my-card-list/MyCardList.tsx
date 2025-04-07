@@ -39,7 +39,6 @@ const MyCardList = () => {
   const SentryTestTrigger = () => {
     useEffect(() => {
       if (process.env.NODE_ENV === "production") {
-        alert("📡 Sentry 테스트 실행됨 (배포 환경)");
         Sentry.captureException(new Error("🧪 배포 환경 Sentry 테스트 에러"));
       }
     }, []);

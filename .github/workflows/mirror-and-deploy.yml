@@ -19,6 +19,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install GitHub CLI
+        run: sudo apt-get install gh -y
+
+      - name: Get last merged PR title
+        id: pr_title
+        run: |
+          gh auth setup-git
+          gh pr list --state merged --base main --limit 1 --json title -q '.[0].title' > pr_title.txt
+          echo "pr_title=$(cat pr_title.txt)" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install dependencies
         run: npm ci
 
@@ -37,9 +49,9 @@ jobs:
           rm -rf target-repo/*
           mkdir -p deploy
           ITEMS=(".next" "public" "src" "components.json" "next.config.mjs" \
-                  "package.json" "package-lock.json" "postcss.config.mjs" \
-                  "tailwind.config.ts" "tsconfig.json" \ 
-                  "sentry.edge.config.ts" "sentry.server.config.ts")
+                 "package.json" "package-lock.json" "postcss.config.mjs" \
+                 "tailwind.config.ts" "tsconfig.json" \
+                 "sentry.edge.config.ts" "sentry.server.config.ts" "sentry.client.config.ts")
           for ITEM in "${ITEMS[@]}"; do
             if [ -e "$ITEM" ]; then
               cp -r "$ITEM" deploy/
@@ -55,5 +67,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add .
-          git commit -m "${{ github.event.commits[0].message }}" || echo "⚠️ No changes to commit"
+          git commit -m "${{ steps.pr_title.outputs.pr_title }}" || echo "⚠️ No changes to commit"
           git push origin main

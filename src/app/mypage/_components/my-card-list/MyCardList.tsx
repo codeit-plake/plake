@@ -1,5 +1,9 @@
 "use client";
 
+// Sentry 테스트용 코드 | 삭제될 예정
+import * as Sentry from "@sentry/nextjs";
+import { useEffect } from "react";
+
 import EmptyState from "@/app/mypage/_components/EmptyState";
 import MyCardAction from "@/app/mypage/_components/my-card-item/MyCardAction";
 import MyCardContent from "@/app/mypage/_components/my-card-item/MyCardContent";
@@ -31,8 +35,22 @@ const MyCardList = () => {
     return <EmptyState message={EMPTY_MESSAGE.mypage.default} />;
   }
 
+  // Sentry 테스트용 코드 | 삭제될 예정
+  const SentryTestTrigger = () => {
+    useEffect(() => {
+      if (process.env.NODE_ENV === "production") {
+        alert("📡 Sentry 테스트 실행됨 (배포 환경)");
+        Sentry.captureException(new Error("🧪 배포 환경 Sentry 테스트 에러"));
+      }
+    }, []);
+
+    return null;
+  };
+
   return (
     <>
+      {/* Sentry 테스트용 코드 | 삭제될 예정 */}
+      <SentryTestTrigger />
       {filteredList.map((gathering, index) => (
         <MyCardItem
           key={gathering.id}

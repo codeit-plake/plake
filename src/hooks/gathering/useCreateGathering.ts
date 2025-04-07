@@ -15,7 +15,7 @@ export const useCreateGathering = () => {
       return gatheringService.createGathering(data);
     },
     onSuccess: async data => {
-      const gatheringId = data.id;
+      const gatheringId = String(data.id);
 
       await gatheringService.joinGathering(gatheringId);
 

@@ -40,13 +40,3 @@ export const FormDropdown: Story = {
     type: "form",
   },
 };
-
-export const SortDropdown: Story = {
-  args: {
-    option: [
-      { value: "registrationEnd", label: "마감 임박" },
-      { value: "participantCount", label: "참여 인원 수" },
-    ],
-    type: "sort",
-  },
-};

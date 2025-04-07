@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimePicker 컴포넌트 테스트 렌더링 테스트 기본값이 제대로 렌더링되어야 함 1`] = `
+<button
+  aria-label="12시"
+  class="flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-purple-600 text-white hover:bg-purple-700 rounded-xl text-base font-semibold h-9 px-4 py-2"
+  role="button"
+  type="button"
+>
+  12
+</button>
+`;
+
+exports[`TimePicker 컴포넌트 테스트 렌더링 테스트 기본값이 제대로 렌더링되어야 함 2`] = `
+<button
+  aria-label="00분"
+  class="flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-purple-600 text-white hover:bg-purple-700 rounded-xl text-base font-semibold h-9 px-4 py-2"
+  role="button"
+  type="button"
+>
+  00
+</button>
+`;
+
+exports[`TimePicker 컴포넌트 테스트 렌더링 테스트 기본값이 제대로 렌더링되어야 함 3`] = `
+<button
+  aria-label="PM"
+  class="flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-purple-600 text-white hover:bg-purple-700 rounded-xl text-base font-semibold h-9 px-4 py-2"
+  role="button"
+  type="button"
+>
+  PM
+</button>
+`;
+
+exports[`TimePicker 컴포넌트 테스트 렌더링 테스트 초기값이 제공되면 해당 값으로 렌더링되어야 함 1`] = `
+<button
+  aria-label="02시"
+  class="flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-purple-600 text-white hover:bg-purple-700 rounded-xl text-base font-semibold h-9 px-4 py-2"
+  role="button"
+  type="button"
+>
+  02
+</button>
+`;
+
+exports[`TimePicker 컴포넌트 테스트 렌더링 테스트 초기값이 제공되면 해당 값으로 렌더링되어야 함 2`] = `
+<button
+  aria-label="30분"
+  class="flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-purple-600 text-white hover:bg-purple-700 rounded-xl text-base font-semibold h-9 px-4 py-2"
+  role="button"
+  type="button"
+>
+  30
+</button>
+`;
+
+exports[`TimePicker 컴포넌트 테스트 렌더링 테스트 초기값이 제공되면 해당 값으로 렌더링되어야 함 3`] = `
+<button
+  aria-label="AM"
+  class="flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-purple-600 text-white hover:bg-purple-700 rounded-xl text-base font-semibold h-9 px-4 py-2"
+  role="button"
+  type="button"
+>
+  AM
+</button>
+`;

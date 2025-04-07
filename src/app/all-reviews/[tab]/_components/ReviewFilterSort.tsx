@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import Dropdown from "@/components/common/Dropdown";
 import FilterCalendar from "@/components/common/FilterCalendar";
+import SortDropdown from "@/components/common/SortDropdown";
 import { REVIEW_OFFLINE_PATH, REVIEW_SORT_OPTION } from "@/constants/review";
 import useCustomSearchParams from "@/hooks/useCustomSearchParams";
 import useTabStore from "@/stores/useTabStore";
@@ -45,8 +46,7 @@ const ReviewFilterSort = () => {
         />
       </div>
       <div>
-        <Dropdown
-          type="sort"
+        <SortDropdown
           placeholder="정렬"
           option={REVIEW_SORT_OPTION}
           defaultValue={defaultValue}

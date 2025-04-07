@@ -13,12 +13,12 @@ const ReviewListParent = () => {
   const { tab } = useParams();
   const searchParams = useSearchParams();
   const online = SERVICE_LIST.ONLINE;
-  const onlineCheck = tab === online.value;
+  const isOnline = tab === online.value;
 
-  const type = onlineCheck ? online.type : searchParams.get("type");
+  const type = isOnline ? online.type : searchParams.get("type");
   let location;
   if (searchParams.get("location") !== "전체") {
-    location = onlineCheck ? online.location : searchParams.get("location");
+    location = isOnline ? online.location : searchParams.get("location");
   } else {
     location = "";
   }
@@ -35,7 +35,7 @@ const ReviewListParent = () => {
   };
 
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage } =
-    useSuspenseReviewList(reviewQueryParams);
+    useSuspenseReviewList(!isOnline, reviewQueryParams);
 
   const flatData = data?.pages.flatMap(page => page.data);
 

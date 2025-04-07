@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingDots 컴포넌트 테스트 color가 purple일 때 스냅샷과 일치한다 1`] = `
+<div>
+  <div
+    class="flex h-full w-full flex-grow items-center justify-center"
+  >
+    <div
+      aria-live="polite"
+      class="z-50 flex space-x-3.5"
+      role="status"
+    >
+      <div
+        class="h-3 w-3 animate-bounce rounded-full bg-purple-300"
+        style="animation-delay: 0s;"
+      />
+      <div
+        class="h-3 w-3 animate-bounce rounded-full bg-purple-300"
+        style="animation-delay: 0.15s;"
+      />
+      <div
+        class="h-3 w-3 animate-bounce rounded-full bg-purple-300"
+        style="animation-delay: 0.3s;"
+      />
+      <span
+        class="sr-only"
+      >
+        Loading...
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LoadingDots 컴포넌트 테스트 기본 color(gray)로 렌더링된 결과가 스냅샷과 일치한다 1`] = `
+<div>
+  <div
+    class="flex h-full w-full flex-grow items-center justify-center"
+  >
+    <div
+      aria-live="polite"
+      class="z-50 flex space-x-3.5"
+      role="status"
+    >
+      <div
+        class="h-3 w-3 animate-bounce rounded-full bg-gray-200"
+        style="animation-delay: 0s;"
+      />
+      <div
+        class="h-3 w-3 animate-bounce rounded-full bg-gray-200"
+        style="animation-delay: 0.15s;"
+      />
+      <div
+        class="h-3 w-3 animate-bounce rounded-full bg-gray-200"
+        style="animation-delay: 0.3s;"
+      />
+      <span
+        class="sr-only"
+      >
+        Loading...
+      </span>
+    </div>
+  </div>
+</div>
+`;

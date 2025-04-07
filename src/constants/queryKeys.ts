@@ -1,9 +1,8 @@
+import { IFavoriteFilterParams } from "@/constants/favorite";
 import { IGatheringFilterParams } from "@/types/gathering";
 import { TReviewQueryParams } from "@/types/review";
 
-import { IFavoriteFilterParams } from "./favorite";
-
-const AUTH_ALL = "auth" as const;
+const AUTH_ALL = ["auth"] as const;
 const GATHERING_ALL = ["gathering"] as const;
 const REVIEW_ALL = ["review"] as const;
 const FAVORITE_ALL = ["favorite"] as const;

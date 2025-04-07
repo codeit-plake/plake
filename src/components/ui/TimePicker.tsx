@@ -62,6 +62,7 @@ const TimePicker = ({ selectedDate, setValue, value }: ITimePickerProps) => {
           return (
             <Button
               type="button"
+              aria-label={`${hour.toString().padStart(2, "0")}시`}
               variant={selectedHour === hour ? "purple" : "ghost"}
               key={index}
               onClick={() => {
@@ -78,6 +79,7 @@ const TimePicker = ({ selectedDate, setValue, value }: ITimePickerProps) => {
         {Array.from({ length: 12 }, (_, index) => index * 5).map(minute => (
           <Button
             type="button"
+            aria-label={`${minute.toString().padStart(2, "0")}분`}
             variant={selectedMinute === minute ? "purple" : "ghost"}
             key={minute}
             onClick={() => {
@@ -92,6 +94,7 @@ const TimePicker = ({ selectedDate, setValue, value }: ITimePickerProps) => {
       <div className={baseStyle}>
         <Button
           type="button"
+          aria-label="PM"
           variant={selectedAmPm === "PM" ? "purple" : "ghost"}
           onClick={() => {
             setSelectedAmPm("PM");
@@ -102,6 +105,7 @@ const TimePicker = ({ selectedDate, setValue, value }: ITimePickerProps) => {
         </Button>
         <Button
           type="button"
+          aria-label="AM"
           variant={selectedAmPm === "AM" ? "purple" : "ghost"}
           onClick={() => {
             setSelectedAmPm("AM");

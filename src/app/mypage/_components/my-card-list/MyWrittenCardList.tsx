@@ -20,7 +20,7 @@ const MyWrittenCardList = ({ userId }: MyWrittenCardListProps) => {
   };
 
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage } =
-    useSuspenseReviewList(reviewQueryParams);
+    useSuspenseReviewList(false, reviewQueryParams);
 
   const list = data?.pages.flatMap(page => page.data);
 

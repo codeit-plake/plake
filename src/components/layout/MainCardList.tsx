@@ -1,19 +1,25 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 import { useSuspenseGatheringInfiniteList } from "@/hooks/gathering/useGatheringInfiniteList";
+import useCustomSearchParams from "@/hooks/useCustomSearchParams";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
-import { IGatheringFilterParams } from "@/types/gathering";
+import { updateGatheringParams } from "@/utils/gatheringFilterParams";
 
 import MainCardItem from "./MainCardItem";
 
 interface IMainCardListProps {
   tab: string;
-  filteredParams: IGatheringFilterParams;
 }
 
-const MainCardList = ({ tab, filteredParams }: IMainCardListProps) => {
+const MainCardList = ({ tab }: IMainCardListProps) => {
+  const pathname = usePathname();
+  const { searchParamsObj } = useCustomSearchParams();
+  const params = updateGatheringParams(pathname, searchParamsObj);
+
   const { data, status, hasNextPage, fetchNextPage } =
-    useSuspenseGatheringInfiniteList(tab, filteredParams);
+    useSuspenseGatheringInfiniteList(tab, params);
 
   const onIntersect: IntersectionObserverCallback = ([{ isIntersecting }]) => {
     if (isIntersecting && hasNextPage) {

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import Dropdown from "@/components/common/Dropdown";
 import FilterCalendar from "@/components/common/FilterCalendar";
+import SortDropdown from "@/components/common/SortDropdown";
 import { OFFLINE_PATH } from "@/constants/gatheringFilterParams";
 import { SORT_OPTION } from "@/constants/ui";
 import useCustomSearchParams from "@/hooks/useCustomSearchParams";
@@ -47,9 +48,7 @@ const GatheringFilterSort = () => {
         />
       </div>
       <div>
-        <Dropdown
-          type="sort"
-          placeholder="정렬"
+        <SortDropdown
           option={SORT_OPTION}
           onSelect={value => setSearchParams({ sortBy: value })}
           defaultValue={defaultValue}

@@ -1,15 +1,15 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 import { ONLINE, ONLINE_PATH } from "@/constants/gatheringFilterParams";
 import { MAIN_TAB } from "@/constants/ui";
 import useCustomSearchParams from "@/hooks/useCustomSearchParams";
 import { cn } from "@/lib/utils";
 
-const MainTab = () => {
-  const pathname = usePathname();
+interface IMainTabProps {
+  pathname: string;
+}
+
+const MainTab = ({ pathname }: IMainTabProps) => {
   const { setSearchParams } = useCustomSearchParams();
 
   return (
@@ -18,7 +18,7 @@ const MainTab = () => {
         <Link
           key={i}
           href={tab.href}
-          aria-label="메인 주제 탭"
+          aria-label={tab.name === "오프라인" ? "오프라인 탭" : "온라인 탭"}
           className="relative"
           onClick={() => pathname === ONLINE_PATH && setSearchParams(ONLINE)}
         >

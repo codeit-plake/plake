@@ -28,6 +28,7 @@ const ImageUploader = ({ setValue }: ImageUploaderProps) => {
       </div>
       <input
         type="file"
+        aria-label="이미지 업로드"
         className="hidden"
         id="image-file"
         accept="image/*"

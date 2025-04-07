@@ -61,12 +61,14 @@ function Calendar({
       components={{
         IconLeft: ({ className, ...props }) => (
           <IoMdArrowDropleft
+            aria-label="이전 달"
             className={cn("h-8 w-8 scale-150", className)}
             {...props}
           />
         ),
         IconRight: ({ className, ...props }) => (
           <IoMdArrowDropright
+            aria-label="다음 달"
             className={cn("h-8 w-8 scale-150", className)}
             {...props}
           />

@@ -1,4 +1,4 @@
-import DateTimePicker from "@/components/modals/create-gathering-modal/DateTimePicker";
+import DateTimePicker from "@/components/ui/DateTimePicker";
 
 interface IDateTimeAndEndTimePickerProps {
   dateTimeValue: string;

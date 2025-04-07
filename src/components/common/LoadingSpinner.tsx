@@ -5,6 +5,19 @@ interface LoadingSpinnerProps {
   color?: "purple" | "gray" | "white";
 }
 
+const sizeClasses = {
+  xs: "h-4 w-4",
+  sm: "h-6 w-6",
+  md: "h-8 w-8",
+  lg: "h-12 w-12",
+} as const;
+
+const colorClasses = {
+  purple: "fill-purple-500 text-gray-200",
+  gray: "fill-gray-500 text-gray-200",
+  white: "fill-white text-gray-200",
+} as const;
+
 const LoadingSpinner = ({
   size = "md",
   color = "purple",
@@ -13,20 +26,7 @@ const LoadingSpinner = ({
     <div role="status" className="z-50 flex items-center justify-center">
       <svg
         aria-hidden="true"
-        className={clsx(
-          "animate-spin",
-          {
-            "h-4 w-4": size === "xs",
-            "h-6 w-6": size === "sm",
-            "h-8 w-8": size === "md",
-            "h-12 w-12": size === "lg",
-          },
-          {
-            "fill-purple-500 text-gray-200": color === "purple",
-            "fill-gray-500 text-gray-200": color === "gray",
-            "fill-white text-gray-200": color === "white",
-          },
-        )}
+        className={clsx("animate-spin", sizeClasses[size], colorClasses[color])}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

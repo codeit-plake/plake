@@ -1,6 +1,5 @@
 "use client";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-fade";
 
@@ -14,8 +13,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const MainBanner = () => {
   const animatedTexts = ["러닝", "게임", "음악", "치맥"];
   const [currentIndex, setCurrentIndex] = useState(0);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   const swiperRef = useRef<SwiperType | null>(null);
 
@@ -31,7 +28,7 @@ const MainBanner = () => {
   }, [animatedTexts.length]);
 
   return (
-    <section className="relative h-[50vh] w-full overflow-hidden md:h-[90vh]">
+    <section className="relative h-[50vh] max-h-[500px] w-full overflow-hidden md:h-[90vh] md:max-h-[1080px]">
       <Swiper
         className="h-full"
         allowTouchMove={false}
@@ -41,9 +38,6 @@ const MainBanner = () => {
         onSwiper={swiper => {
           swiperRef.current = swiper;
         }}
-        onSlideChange={swiper => {
-          setCurrentSlide(swiper.realIndex);
-        }}
       >
         {animatedTexts.map((text, index) => (
           <SwiperSlide key={text}>
@@ -51,7 +45,7 @@ const MainBanner = () => {
               src={`/images/main_slide${index + 1}.jpg`}
               alt="main_banner"
               fill
-              sizes="100vw"
+              sizes="(max-width: 1280px) 100vw, 1280px"
               className="object-cover"
               priority
             />

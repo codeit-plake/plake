@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubServiceSelector 선택된 버튼에 올바른 스타일이 적용됨 1`] = `
+<button
+  class="flex items-center justify-center whitespace-nowrap rounded-md transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow h-9 px-4 py-2 w-full text-sm font-medium hover:bg-opacity-90 bg-gray-900 text-white"
+  role="button"
+  type="button"
+>
+  운동
+</button>
+`;

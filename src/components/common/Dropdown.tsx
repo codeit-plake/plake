@@ -1,7 +1,6 @@
 "use client";
 
 import { IoMdArrowDropdown } from "react-icons/io";
-import { TbArrowsSort } from "react-icons/tb";
 
 import {
   Select,
@@ -21,7 +20,7 @@ interface IOption {
 interface IDropdownProps {
   option?: Array<IOption>;
   placeholder?: string;
-  type?: "default" | "sort" | "form";
+  type?: "default" | "form";
   defaultValue?: string;
   onSelect?: (value: string) => void;
 }
@@ -47,16 +46,13 @@ const Dropdown = ({
             : "bg-white data-[placeholder]:text-gray-800",
         )}
       >
-        {type === "sort" && <TbArrowsSort size={18} className="mr-2.5" />}
         <SelectValue placeholder={`${placeholder || "지역 전체"}`} />
-        {type !== "sort" && (
-          <IoMdArrowDropdown size={16} color="black" className="ml-2.5" />
-        )}
+        <IoMdArrowDropdown size={16} color="black" className="ml-2.5" />
       </SelectTrigger>
       <SelectContent className="w-full min-w-[110px] rounded-xl bg-white text-black">
         {type === "default" && (
           <SelectItem
-            value="전체"
+            value="total"
             className="h-[32px] cursor-pointer rounded-xl px-2 py-1.5 pl-2 text-sm focus:bg-purple-100"
           >
             {"전체"}

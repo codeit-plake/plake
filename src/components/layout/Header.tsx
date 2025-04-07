@@ -73,7 +73,10 @@ const Header = () => {
           </div>
         </div>
         {!isHydrated ? (
-          <div className="hidden h-10 w-10 items-center justify-center md:flex">
+          <div
+            className="hidden h-10 w-10 items-center justify-center md:flex"
+            data-testid="loading-spinner"
+          >
             <LoadingSpinner size="sm" />
           </div>
         ) : isLoggedIn ? (

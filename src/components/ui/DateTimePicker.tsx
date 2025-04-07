@@ -2,9 +2,9 @@ import dayjs from "dayjs";
 import { useEffect, useRef, useState } from "react";
 import { FaRegCalendar } from "react-icons/fa";
 
-import TimePicker from "@/components/modals/create-gathering-modal/TimePicker";
 import { Calendar } from "@/components/ui/Calendar";
 import { Label } from "@/components/ui/Label";
+import TimePicker from "@/components/ui/TimePicker";
 import { useCalendar } from "@/hooks/useCalendar";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
@@ -66,7 +66,11 @@ const DateTimePicker = ({
   };
 
   return (
-    <section className="flex flex-1 flex-col gap-2">
+    <section
+      className="flex flex-1 cursor-pointer flex-col gap-2"
+      aria-label={`${type === "dateTime" ? "모임 날짜" : "마감 날짜"} 선택`}
+      onClick={() => setIsOpen(true)}
+    >
       <Label className="text-sm font-semibold text-gray-800">
         {type === "dateTime" ? "모임 날짜" : "마감 날짜"}
       </Label>
@@ -74,13 +78,12 @@ const DateTimePicker = ({
         <time className="font-medium text-gray-400" suppressHydrationWarning>
           {displayValue ? displayValue : "날짜를 선택해주세요"}
         </time>
-        <FaRegCalendar
-          className="cursor-pointer"
-          onClick={() => setIsOpen(true)}
-        />
+        <FaRegCalendar className="cursor-pointer" />
         {isOpen && (
           <div
             ref={calendarRef}
+            role="dialog"
+            aria-label="date-time-picker"
             className="absolute bottom-0 left-0 z-10 flex w-full flex-col items-center justify-center gap-3 divide-x-0 divide-gray-200 rounded-2xl border border-gray-200 bg-white p-3 md:bottom-10 md:w-fit md:flex-row md:divide-x"
           >
             <Calendar

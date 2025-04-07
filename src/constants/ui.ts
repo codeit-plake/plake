@@ -7,21 +7,24 @@ export const MAIN_TAB = [
 // 서브 탭
 export const SUB_TAB = {
   OFFLINE: [
-    { name: "전체", value: "" },
+    { name: "전체", value: "", visibleValue: "" },
     {
       name: "운동",
       value: "OFFICE_STRETCHING",
+      visibleValue: "exercise",
     },
     {
       name: "미식",
       value: "MINDFULNESS",
+      visibleValue: "dining",
     },
     {
       name: "예술",
       value: "WORKATION",
+      visibleValue: "art",
     },
   ],
-  ONLINE: [{ name: "전체", value: "" }],
+  ONLINE: [{ name: "전체", value: "", visibleValue: "" }],
 } as const;
 
 export const MY_REVIEW_TAB = [

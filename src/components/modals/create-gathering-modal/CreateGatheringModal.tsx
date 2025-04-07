@@ -7,12 +7,12 @@ import { useShallow } from "zustand/shallow";
 import Dropdown from "@/components/common/Dropdown";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 import DateTimeAndEndTimePicker from "@/components/modals/create-gathering-modal/DateTimeAndEndTimePicker";
-import ImageUploader from "@/components/modals/create-gathering-modal/ImageUploader";
-import ServiceSelector from "@/components/modals/create-gathering-modal/ServiceSelector";
 import Modal from "@/components/modals/Modal";
 import { Button } from "@/components/ui/Button";
+import ImageUploader from "@/components/ui/ImageUploader";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
+import ServiceSelector from "@/components/ui/ServiceSelector";
 import { GATHERING_FORM, SERVICE_LIST } from "@/constants/gathering";
 import { useCreateGathering } from "@/hooks/gathering/useCreateGathering";
 import {

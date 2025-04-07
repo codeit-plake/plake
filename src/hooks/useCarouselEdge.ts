@@ -11,11 +11,7 @@ const useCarouselEdge = ({ direction }: IUseCarouselEdgeProps) => {
 
   useEffect(() => {
     const updateEdgeStatus = () => {
-      if (direction === "prev") {
-        setIsEdge(swiper.isBeginning);
-      } else {
-        setIsEdge(swiper.isEnd);
-      }
+      setIsEdge(direction === "prev" ? swiper.isBeginning : swiper.isEnd);
     };
 
     updateEdgeStatus();

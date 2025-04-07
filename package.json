@@ -11,6 +11,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest",
+    "coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "type-check": "tsc --noEmit"
@@ -35,6 +36,7 @@
     "lucide-react": "^0.479.0",
     "motion": "^12.5.0",
     "next": "14.2.24",
+    "next-router-mock": "^0.9.13",
     "react": "^18",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18",

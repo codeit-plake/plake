@@ -1,17 +1,9 @@
 import { TReviewForm } from "@/schemas/reviewSchema";
+import { ApiRouteService } from "@/services/Service";
 
-class ReviewService {
+class ReviewService extends ApiRouteService {
   async createReview(data: TReviewForm) {
-    const res = await fetch("/api/reviews", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (!res.ok) throw await res.json();
-    return res.json();
+    return this.http.post("/reviews", data);
   }
 }
 

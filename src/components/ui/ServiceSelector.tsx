@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 
-import SubServiceSelector from "@/components/modals/create-gathering-modal/SubServiceSelector";
+import SubServiceSelector from "@/components/ui/SubServiceSelector";
 import { SERVICE_LIST } from "@/constants/gathering";
 
 interface ServiceSelectorProps {

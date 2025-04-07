@@ -19,9 +19,15 @@ const CarouselArrowButton = ({ direction }: { direction: "prev" | "next" }) => {
       )}
     >
       {direction === "prev" ? (
-        <IoIosArrowBack className="-translate-x-[2px] text-2xl text-gray-800 group-hover:text-gray-600" />
+        <IoIosArrowBack
+          aria-label="prev-arrow"
+          className="-translate-x-[2px] text-2xl text-gray-800 group-hover:text-gray-600"
+        />
       ) : (
-        <IoIosArrowForward className="translate-x-[2px] text-2xl text-gray-800 group-hover:text-gray-600" />
+        <IoIosArrowForward
+          aria-label="next-arrow"
+          className="translate-x-[2px] text-2xl text-gray-800 group-hover:text-gray-600"
+        />
       )}
     </button>
   );

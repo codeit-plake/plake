@@ -40,6 +40,7 @@ export const getStatusProps = (gathering: IMyGathering): StatusProps[] => {
 };
 
 export const getButtonType = (gathering: IMyGathering): MyCardActionType => {
+  // 기획 변경으로 인한 기능 삭제
   // if (!gathering.isCompleted) {
   //   return "cancel";
   // }

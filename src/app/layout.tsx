@@ -5,7 +5,6 @@ import type { Metadata } from "next";
 import TokenValidator from "@/components/auth/TokenValidator";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
-import ModalProvider from "@/components/providers/ModalProvider";
 import QueryProvider from "@/components/providers/QueryProvider";
 import { FONT } from "@/constants/font";
 
@@ -27,7 +26,6 @@ export default function RootLayout({
           <Header />
           <main className="global-layout-wrapper">{children}</main>
           <Footer />
-          <ModalProvider />
           <TokenValidator />
         </QueryProvider>
         <aside id="modal-root" />

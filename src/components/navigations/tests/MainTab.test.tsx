@@ -1,40 +1,19 @@
 import "@testing-library/jest-dom";
 
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import * as mockRouter from "next-router-mock";
-import { MemoryRouterProvider } from "next-router-mock/MemoryRouterProvider";
+import { render, screen } from "@testing-library/react";
 
 import MainTab from "../MainTab";
 
-jest.mock(
-  "next/dist/shared/lib/router-context",
-  () =>
-    jest.requireActual("next/dist/shared/lib/router-context.shared-runtime"),
-  { virtual: true },
-);
-
 describe("MainTab 컴포넌트 테스트", () => {
-  it("오프라인 탭을 클릭하면 URL은 '/gathering/offline'과 일치한다.", async () => {
-    render(<MainTab pathname={"/gathering/offline"} />, {
-      wrapper: MemoryRouterProvider,
-    });
+  it("오프라인 탭 렌더링", async () => {
+    render(<MainTab active={true} name={"오프라인"} />);
 
-    fireEvent.click(screen.getByLabelText("오프라인 탭"));
-
-    await waitFor(() => {
-      expect(mockRouter.memoryRouter.asPath).toEqual("/gathering/offline");
-    });
+    expect(screen.getByText("오프라인")).toBeInTheDocument();
   });
 
-  it("온라인 탭을 클릭하면 URL은 '/gathering/online'과 일치한다.", async () => {
-    render(<MainTab pathname={"/gathering/offline"} />, {
-      wrapper: MemoryRouterProvider,
-    });
+  it("온라인 탭 렌더링", async () => {
+    render(<MainTab active={true} name={"온라인"} />);
 
-    fireEvent.click(screen.getByLabelText("온라인 탭"));
-
-    await waitFor(() => {
-      expect(mockRouter.memoryRouter.asPath).toEqual("/gathering/online");
-    });
+    expect(screen.getByText("온라인")).toBeInTheDocument();
   });
 });

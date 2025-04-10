@@ -5,6 +5,7 @@ import { useShallow } from "zustand/shallow";
 
 import { NAV_BUTTONS, NAV_ITEMS } from "@/constants/nav";
 import useLogout from "@/hooks/auth/useLogout";
+import useFavoriteLocalStorage from "@/hooks/useFavorite";
 import { cn } from "@/lib/utils";
 import useSideBarStore from "@/stores/useSideBarStore";
 import useUserStore from "@/stores/useUserStore";
@@ -50,7 +51,9 @@ interface INavItemProps {
 
 const NavItem = ({ isActive }: INavItemProps) => {
   const { onToggleSideBar } = useSideBarStore();
-  const favoriteLength = [1, 2, 3, 4, 5].length; // 임시 찜한 모임 카운트 state
+  const { favoriteByUserLength } = useFavoriteLocalStorage();
+
+  const favoriteLength = favoriteByUserLength(); // 찜한 모임 카운트 state
 
   return (
     <ul className="flex flex-col gap-6 font-semibold md:flex-row md:gap-10">
@@ -70,8 +73,7 @@ const NavItem = ({ isActive }: INavItemProps) => {
             {item.name}
           </Link>
           {item.href === "/favorites" && favoriteLength > 0 && (
-            // favoriteLength 구현 예정
-            <span className="absolute ml-[1.5px] hidden rounded-3xl bg-purple-300 px-[6px] py-0 text-xs font-bold text-white">
+            <span className="absolute ml-[1.5px] rounded-3xl bg-purple-300 px-[6px] py-0 text-xs font-bold text-white">
               {favoriteLength}
             </span>
           )}

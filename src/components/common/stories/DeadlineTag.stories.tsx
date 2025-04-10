@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import dayjs from "dayjs";
 
 import DeadlineTag from "@/components/common/DeadlineTag";
 
@@ -21,7 +22,7 @@ export default meta;
 type Story = StoryObj<typeof DeadlineTag>;
 
 export const HourDeadlineTag: Story = {
-  args: { registrationEnd: new Date() },
+  args: { registrationEnd: dayjs() },
   parameters: {
     docs: {
       description: {
@@ -33,13 +34,9 @@ export const HourDeadlineTag: Story = {
 
 export const DayDeadlineTag: Story = {
   render: () => {
-    const date = new Date();
+    const date = dayjs();
 
-    return (
-      <DeadlineTag
-        registrationEnd={new Date(date.setMonth(date.getMonth() + 1))}
-      />
-    );
+    return <DeadlineTag registrationEnd={date.add(1, "month")} />;
   },
   parameters: {
     docs: {

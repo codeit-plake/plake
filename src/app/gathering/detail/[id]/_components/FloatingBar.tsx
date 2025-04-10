@@ -2,14 +2,13 @@
 
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-import { Button } from "@/components/ui/Button";
-import { useCancelGathering } from "@/hooks/gathering/useCancelGathering";
 import { gatheringDetailQueryOption } from "@/hooks/gathering/useGatheringDetail";
-import { useJoinGathering } from "@/hooks/gathering/useJoinGathering";
 import { participantsQueryOption } from "@/hooks/gathering/useParticipants";
-import useCopyLink from "@/hooks/useCopyLink";
 import useUserStore from "@/stores/useUserStore";
 import { IParticipant } from "@/types/gathering";
+
+import OrganizerButtons from "./OrganizerButtons";
+import ParticipantButtons from "./ParticipantButtons";
 
 interface IFloatingBarProps {
   id: string;
@@ -23,13 +22,6 @@ const FloatingBar = ({ id }: IFloatingBarProps) => {
 
   const user = useUserStore(state => state.user);
   const currentUserId = user?.id;
-
-  const { handleJoinGathering, handleLeaveGathering } = useJoinGathering(
-    id,
-    currentUserId,
-  );
-  const { handleCancelGathering } = useCancelGathering(id);
-  const { handleCopyLink } = useCopyLink();
 
   const isParticipant = participants?.some(
     (participant: IParticipant) => participant.userId === currentUserId,
@@ -49,33 +41,15 @@ const FloatingBar = ({ id }: IFloatingBarProps) => {
           </p>
         </div>
         {isOrganizer ? (
-          <div className="flex gap-2">
-            {!isRegistrationEnd && (
-              <Button onClick={handleCancelGathering} variant="purple-outline">
-                {"취소하기"}
-              </Button>
-            )}
-            <Button variant="purple" onClick={handleCopyLink}>
-              {"공유하기"}
-            </Button>
-          </div>
+          <OrganizerButtons id={id} isRegistrationEnd={isRegistrationEnd} />
         ) : (
           <>
             {!isRegistrationEnd && (
-              <>
-                {isParticipant ? (
-                  <Button
-                    onClick={handleLeaveGathering}
-                    variant="purple-outline"
-                  >
-                    {"참여 취소하기"}
-                  </Button>
-                ) : (
-                  <Button onClick={handleJoinGathering} variant="purple">
-                    {"참여하기"}
-                  </Button>
-                )}
-              </>
+              <ParticipantButtons
+                id={id}
+                currentUserId={currentUserId}
+                isParticipant={isParticipant}
+              />
             )}
           </>
         )}

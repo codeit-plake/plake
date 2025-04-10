@@ -32,7 +32,9 @@ const ReviewTab = () => {
         <Button
           key={tab.value}
           variant="default"
-          aria-label="리뷰 탭"
+          role="tab"
+          aria-label={tab.name}
+          aria-selected={activeTab === tab.value}
           className={cn(
             "rounded-xl px-4 py-2.5",
             activeTab !== tab.value

@@ -18,13 +18,5 @@ describe("LoginJoinLayout 컴포넌트 테스트", () => {
       });
       expect(joinTitle).toBeInTheDocument();
     });
-
-    // it("LoginJoinLayout에 기본 텍스트가 포함되어 있다.", () => {
-    //   render(<LoginJoinLayout />);
-    //   const title = screen.getByText(/로그인/i);
-    //   const description = screen.getByText(/모임을 시작해보세요/i);
-    //   expect(title).toBeInTheDocument();
-    //   expect(description).toBeInTheDocument();
-    // });
   });
 });

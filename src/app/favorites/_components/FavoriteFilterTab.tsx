@@ -5,10 +5,10 @@ import FavoriteSubTab from "./FavoriteSubTab";
 
 const FavoriteFilterTab = () => {
   return (
-    <div className="flex flex-col gap-6">
+    <section className="flex flex-col gap-6" aria-label="주제 탭">
       <FavoriteMainTab />
       <FavoriteSubTab />
-    </div>
+    </section>
   );
 };
 

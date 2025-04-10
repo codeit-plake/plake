@@ -1,11 +1,7 @@
 "use client";
 
-// Sentry 테스트용 코드 | 삭제될 예정
-import * as Sentry from "@sentry/nextjs";
-import { useEffect } from "react";
-
 import EmptyState from "@/app/mypage/_components/EmptyState";
-import MyCardAction from "@/app/mypage/_components/my-card-item/MyCardAction";
+import MyCardActionGroup from "@/app/mypage/_components/my-card-item/actions/MyCardActionGroup";
 import MyCardContent from "@/app/mypage/_components/my-card-item/MyCardContent";
 import MyCardImage from "@/app/mypage/_components/my-card-item/MyCardImage";
 import MyCardItem from "@/app/mypage/_components/my-card-item/MyCardItem";
@@ -35,21 +31,8 @@ const MyCardList = () => {
     return <EmptyState message={EMPTY_MESSAGE.mypage.default} />;
   }
 
-  // Sentry 테스트용 코드 | 삭제될 예정
-  const SentryTestTrigger = () => {
-    useEffect(() => {
-      if (process.env.NODE_ENV === "production") {
-        Sentry.captureException(new Error("🧪 배포 환경 Sentry 테스트 에러"));
-      }
-    }, []);
-
-    return null;
-  };
-
   return (
     <>
-      {/* Sentry 테스트용 코드 | 삭제될 예정 */}
-      <SentryTestTrigger />
       {filteredList.map((gathering, index) => (
         <MyCardItem
           key={gathering.id}
@@ -69,13 +52,16 @@ const MyCardList = () => {
                 capacity={gathering.capacity}
               />
             </div>
-            <MyCardAction type={getButtonType(gathering)} id={gathering.id} />
+            <MyCardActionGroup
+              type={getButtonType(gathering)}
+              id={gathering.id}
+            />
           </MyCardContent>
         </MyCardItem>
       ))}
 
       {status === "error" ? (
-        <div>{"에러가 발생했습니다."}</div>
+        <div role="alert">에러가 발생했습니다.</div>
       ) : (
         <div ref={setTarget}></div>
       )}

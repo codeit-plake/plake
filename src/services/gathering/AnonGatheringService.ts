@@ -1,4 +1,7 @@
-import { IFavoriteFilterParams } from "@/constants/favorite";
+import {
+  IFavoriteFilterParams,
+  MAX_FAVORITE_COUNT,
+} from "@/constants/favorite";
 import { ITEMS_PER_PAGE } from "@/constants/gatheringFilterParams";
 import Service from "@/services/Service";
 import {
@@ -40,7 +43,9 @@ class AnonGatheringService extends Service {
     const ids = params.id?.length > 0 ? params.id.join(",") : "";
 
     if (ids) {
-      return this.http.get<IGathering[]>(`/gatherings?limit=30${`&id=${ids}`}`);
+      return this.http.get<IGathering[]>(
+        `/gatherings?limit=${MAX_FAVORITE_COUNT}${`&id=${ids}`}`,
+      );
     }
     return [];
   }

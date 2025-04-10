@@ -1,4 +1,5 @@
 import { ONLINE, ONLINE_PATH } from "@/constants/gatheringFilterParams";
+import { LOCATION_OPTION } from "@/constants/ui";
 import { IGatheringFilterParams } from "@/types/gathering";
 
 export const filterUndefined = (paramsObj: IGatheringFilterParams) => {
@@ -13,6 +14,9 @@ export const filterUndefined = (paramsObj: IGatheringFilterParams) => {
 
 export const updateTypeOption = (paramsObj: IGatheringFilterParams) => {
   const type = paramsObj?.type;
+  let notExist = false;
+
+  if (!type) return paramsObj;
 
   if (type) {
     let value = "";
@@ -29,9 +33,15 @@ export const updateTypeOption = (paramsObj: IGatheringFilterParams) => {
       case "art":
         value = "WORKATION";
         break;
+
+      default:
+        notExist = true;
+        break;
     }
 
     paramsObj["type"] = value;
+
+    if (notExist) delete paramsObj.type; //존재하지 않은 옵션의 경우 key type 삭제
   }
 
   return paramsObj;
@@ -41,13 +51,19 @@ export const updateLocationOption = (
   pathname: string,
   paramsObj: IGatheringFilterParams,
 ) => {
-  const location = paramsObj.location;
+  const location = paramsObj.location || "";
 
   if (pathname === ONLINE_PATH) {
     paramsObj["location"] = ONLINE.location;
+
+    return paramsObj;
   }
 
-  if (location === "total") {
+  const locationOptions = LOCATION_OPTION.map(option => {
+    return option.value;
+  });
+
+  if (!locationOptions.includes(location) || location === "total") {
     delete paramsObj.location;
   }
 

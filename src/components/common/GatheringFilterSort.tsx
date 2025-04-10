@@ -33,7 +33,10 @@ const GatheringFilterSort = () => {
   }, [isSubTabChange, onSubTabChangeOff]);
 
   return (
-    <section className="mb-6 flex items-center justify-between gap-1">
+    <section
+      className="mb-6 flex items-center justify-between gap-1"
+      aria-label="필터 정렬 드롭다운"
+    >
       <div className="flex items-center justify-center gap-2">
         {pathname === OFFLINE_PATH && (
           <Dropdown

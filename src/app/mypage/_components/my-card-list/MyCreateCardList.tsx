@@ -56,7 +56,7 @@ const MyCreateCardList = ({ userId }: MyCreateCardListProps) => {
       ))}
 
       {status === "error" ? (
-        <div>{"에러가 발생했습니다."}</div>
+        <div role="alert">에러가 발생했습니다.</div>
       ) : (
         <div ref={setTarget}></div>
       )}

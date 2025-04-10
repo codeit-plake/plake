@@ -1,4 +1,15 @@
 import useUserStore from "@/stores/useUserStore";
+import { IUser } from "@/types/user";
+
+type UserStore = {
+  user: IUser | null;
+  isLoggedIn: boolean;
+  isHydrated: boolean;
+  updateUserState?: (user: IUser) => void;
+  setUserState?: (user: IUser) => void;
+  clearUserState?: () => void;
+  setHydrated?: (state: boolean) => void;
+};
 
 /**
 // 로그인 상태 모킹 (기본값 사용)
@@ -12,9 +23,6 @@ mockUserStore.loggedIn({
 
 // 로그아웃 상태 모킹
 mockUserStore.loggedOut();
-
-// 로딩 상태 모킹
-mockUserStore.loading();
 
  */
 export const mockUser = {
@@ -70,17 +78,10 @@ export const mockUserStore = {
     (useUserStore as unknown as jest.Mock).mockReturnValue(mockStore);
     return mockStore;
   },
+};
 
-  // 로딩 중 상태 모킹
-  loading: (overrides = {}) => {
-    const mockStore = {
-      user: null,
-      isLoggedIn: false,
-      isHydrated: false,
-      ...overrides,
-    };
-
-    (useUserStore as unknown as jest.Mock).mockReturnValue(mockStore);
-    return mockStore;
-  },
+export const applyUserStoreSelectorMock = (store: UserStore) => {
+  (useUserStore as unknown as jest.Mock).mockImplementation(selector =>
+    typeof selector === "function" ? selector(store) : store,
+  );
 };

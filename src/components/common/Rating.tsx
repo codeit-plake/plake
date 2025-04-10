@@ -41,6 +41,7 @@ const Rating = ({
           key={index}
           onClick={e => handleRatingChange(e, index)}
           className={clsx(isEditable && "cursor-pointer")}
+          data-testid={`rating-heart-${index + 1}`}
         >
           <FaHeart
             className={

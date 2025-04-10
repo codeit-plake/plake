@@ -40,7 +40,10 @@ const ReviewCardItem = ({ review }: TReviewCardItemProps) => {
         </div>
         <div className="flex min-h-[156px] flex-1 flex-col gap-[10px] border-b-2 border-dashed border-gray-200 pb-4">
           <Rating rating={score} />
-          <p className="min-h-[56px] text-sm font-medium text-gray-700">
+          <p
+            className="min-h-[56px] text-sm font-medium text-gray-700"
+            aria-label="review-comment"
+          >
             {comment}
           </p>
           <div className="text-xs font-medium text-gray-700">

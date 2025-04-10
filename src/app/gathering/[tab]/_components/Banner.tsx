@@ -3,7 +3,7 @@ import Image from "next/image";
 const Banner = () => {
   return (
     <div className="mt-10 flex items-center">
-      <div className="mr-16 flex items-center gap-[17px]">
+      <div className="mr-14 flex items-center gap-[17px]">
         <Image
           src="/images/banner_introduce.png"
           width={72}
@@ -12,7 +12,7 @@ const Banner = () => {
         />
         <div>
           <p className="text-sm">{"함께 할 사람이 없나요?"}</p>
-          <p className="text-xl font-bold text-[#292929] sm:text-2xl">
+          <p className="text-lg font-bold text-[#292929] md:text-xl">
             {"지금 모임에 참여해보세요"}
           </p>
         </div>

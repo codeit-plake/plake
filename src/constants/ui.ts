@@ -44,3 +44,10 @@ export const SORT_OPTION = [
   { value: "registrationEnd", label: "마감임박순" },
   { value: "participantCount", label: "인기순" },
 ];
+
+// 액션 버튼 텍스트
+export const MY_CARD_ACTION_TEXT = {
+  CANCEL: "예약 취소하기",
+  VIEW_REVIEW: "내가 쓴 리뷰 보기",
+  WRITE_REVIEW: "리뷰 작성하기",
+} as const;

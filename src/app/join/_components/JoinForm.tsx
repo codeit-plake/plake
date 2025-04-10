@@ -9,12 +9,13 @@ import { z } from "zod";
 
 import userSignUpAction from "@/actions/user-signup-action";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
+import AlertModal from "@/components/modals/confirm-alert-modal/AlertModal";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { JOIN_INPUTS } from "@/constants/loginJoin";
 import useDebounce from "@/hooks/useDebounce";
+import { useModal } from "@/hooks/useModal";
 import { JoinFormSchema } from "@/schemas/loginJoinSchema";
-import useModalStore from "@/stores/useModalStore";
 
 export type TJoinForm = z.infer<typeof JoinFormSchema>;
 export type TErrorMsg = {
@@ -44,7 +45,8 @@ const JoinForm = () => {
 
   const [state, formAction] = useFormState(userSignUpAction, null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { openAlert } = useModalStore();
+  const [alertMessage, setAlertMessage] = useState("");
+  const { isOpen, onClose, onOpen } = useModal();
 
   useEffect(() => {
     if (state && !state.status) {
@@ -63,10 +65,10 @@ const JoinForm = () => {
       );
       setIsSubmitting(false);
     } else if (state && state.status) {
-      openAlert("회원가입이 완료되었습니다.");
-      router.replace("/login");
+      setAlertMessage("회원가입이 완료되었습니다.");
+      onOpen();
     }
-  }, [state, setError, router, openAlert]);
+  }, [state, setError, router, onOpen]);
 
   const registerWithValidation = (
     name: keyof TJoinForm,
@@ -102,29 +104,41 @@ const JoinForm = () => {
   });
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-6">
-      {JOIN_INPUTS.map(input => (
-        <Input
-          {...registerWithValidation(input.id as keyof TJoinForm)}
-          key={input.id}
-          id={input.id}
-          type={input.type}
-          label={input.label}
+    <>
+      <form onSubmit={onSubmit} className="flex flex-col gap-6">
+        {JOIN_INPUTS.map(input => (
+          <Input
+            {...registerWithValidation(input.id as keyof TJoinForm)}
+            key={input.id}
+            id={input.id}
+            type={input.type}
+            label={input.label}
+            disabled={isSubmitting}
+            placeholder={input.placeholder}
+            errorMsg={errors[input.id as keyof TJoinForm]?.message}
+          />
+        ))}
+        <Button
+          variant={"purple"}
+          type="submit"
+          className="mb-6 mt-10 h-[40px] text-sm font-semibold md:text-base"
+          aria-label="join-btn"
           disabled={isSubmitting}
-          placeholder={input.placeholder}
-          errorMsg={errors[input.id as keyof TJoinForm]?.message}
+        >
+          {isSubmitting ? <LoadingSpinner size="xs" /> : "회원가입"}
+        </Button>
+      </form>
+      {isOpen && (
+        <AlertModal
+          isOpen={isOpen}
+          onClose={onClose}
+          onConfirm={() => {
+            router.replace("/login");
+          }}
+          title={alertMessage}
         />
-      ))}
-      <Button
-        variant={"purple"}
-        type="submit"
-        className="mb-6 mt-10 h-[40px] text-sm font-semibold md:text-base"
-        aria-label="join-btn"
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? <LoadingSpinner size="xs" /> : "회원가입"}
-      </Button>
-    </form>
+      )}
+    </>
   );
 };
 

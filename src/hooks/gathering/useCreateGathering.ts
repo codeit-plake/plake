@@ -3,14 +3,17 @@ import { useRouter } from "next/navigation";
 
 import { QUERY_KEYS } from "@/constants/queryKeys";
 import gatheringService from "@/services/gathering/GatheringService";
-import useModalStore from "@/stores/useModalStore";
 
 export const useCreateGathering = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
-  const openAlert = useModalStore(state => state.openAlert);
 
-  const { mutate: createGathering, isPending } = useMutation({
+  const {
+    mutate: createGathering,
+    isPending,
+    isError,
+    isSuccess,
+  } = useMutation({
     mutationFn: async (data: FormData) => {
       return gatheringService.createGathering(data);
     },
@@ -24,12 +27,9 @@ export const useCreateGathering = () => {
       });
 
       router.push(`/gathering/detail/${gatheringId}`);
-
-      useModalStore.getState().onClose();
     },
     onError: error => {
       console.error("모임 생성 실패:", error);
-      openAlert("모임 생성에 실패했습니다. 잠시 후 다시 시도해주세요.");
     },
   });
 
@@ -37,5 +37,5 @@ export const useCreateGathering = () => {
     createGathering(data);
   };
 
-  return { handleCreateGathering, isPending };
+  return { handleCreateGathering, isPending, isError, isSuccess };
 };

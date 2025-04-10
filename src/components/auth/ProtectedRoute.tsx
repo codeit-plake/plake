@@ -1,23 +1,27 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { checkAuthToken } from "@/hooks/auth/useCheckToken";
 import useLogout from "@/hooks/auth/useLogout";
-import useModalStore from "@/stores/useModalStore";
+import { useModal } from "@/hooks/useModal";
 import useUserStore from "@/stores/useUserStore";
+
+import AlertModal from "../modals/confirm-alert-modal/AlertModal";
 
 const ProtectedRoute = () => {
   const router = useRouter();
   const { logout } = useLogout();
-  const { openAlert } = useModalStore();
   const { isLoggedIn } = useUserStore();
   const checkIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const { isOpen, onClose, onOpen } = useModal();
+  const [alertMessage, setAlertMessage] = useState("");
 
   // 로그아웃 처리 함수
   const handleLogout = () => {
-    openAlert("로그인이 필요한 서비스입니다.\n로그인 후 이용해주세요.");
+    setAlertMessage("로그인이 필요한 서비스입니다.\n로그인 후 이용해주세요.");
+    onOpen();
     logout();
     router.replace("/login");
   };
@@ -54,7 +58,13 @@ const ProtectedRoute = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn]);
 
-  return null;
+  return (
+    <>
+      {isOpen && (
+        <AlertModal isOpen={isOpen} onClose={onClose} title={alertMessage} />
+      )}
+    </>
+  );
 };
 
 export default ProtectedRoute;

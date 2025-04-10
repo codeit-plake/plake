@@ -11,8 +11,10 @@ export type IFavoriteFilterParams = {
 };
 
 export interface IfavoriteAll {
-  favoriteAll: IFavorite;
+  favorite: IFavorite;
 }
 export interface IFavorite {
   [key: string]: Array<string>;
 }
+
+export const MAX_FAVORITE_COUNT = 30;

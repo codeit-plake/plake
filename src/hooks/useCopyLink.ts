@@ -1,23 +1,26 @@
 import { usePathname } from "next/navigation";
-
-import useModalStore from "@/stores/useModalStore";
+import { useState } from "react";
 
 const useCopyLink = () => {
   const pathname = usePathname();
-  const openAlert = useModalStore(state => state.openAlert);
+  const [copyError, setCopyError] = useState<Error | null>(null);
 
   const handleCopyLink = async () => {
     try {
       const url = `${window.location.origin}${pathname}`;
       await navigator.clipboard.writeText(url);
-      openAlert("링크가 복사되었습니다.");
+      setCopyError(null);
     } catch (error) {
       console.error("링크 복사 실패", error);
-      openAlert("링크 복사에 실패했습니다.\n다시 시도해주세요.");
+      if (error instanceof Error) {
+        setCopyError(error);
+      } else {
+        setCopyError(new Error("알 수 없는 오류가 발생했습니다"));
+      }
     }
   };
 
-  return { handleCopyLink };
+  return { handleCopyLink, copyError };
 };
 
 export default useCopyLink;

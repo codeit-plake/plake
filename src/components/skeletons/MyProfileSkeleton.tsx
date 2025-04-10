@@ -2,7 +2,10 @@ import { Skeleton } from "@/components/ui/Skeleton";
 
 const MyProfileSkeleton = () => {
   return (
-    <div className="flex h-[109px] gap-3 bg-white px-6">
+    <div
+      data-testid="profile-skeleton"
+      className="flex h-[109px] gap-3 bg-white px-6"
+    >
       <div className="mt-[-16px]">
         <div className="relative h-14 w-14 overflow-hidden rounded-full bg-white">
           <Skeleton className="absolute h-full w-full" />

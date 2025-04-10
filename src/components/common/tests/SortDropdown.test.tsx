@@ -30,7 +30,7 @@ describe("SortDropdown 컴포넌트 테스트", () => {
 
       await User.click(dropdown);
 
-      expect(screen.getAllByRole("option")).toHaveLength(3);
+      expect(screen.getAllByRole("option")).toHaveLength(3); //기본적으로 렌더링되는 '전체' Option을 포함해 총 3개의 options가 렌더링되어야 함.
 
       expect(screen.getByLabelText(/전체/i)).toBeInTheDocument();
       expect(screen.getByLabelText(/마감임박순/i)).toBeInTheDocument();

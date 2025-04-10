@@ -1,6 +1,7 @@
 "use client";
 
 import { useSuspenseQuery } from "@tanstack/react-query";
+import dayjs from "dayjs";
 import Image from "next/image";
 
 import DeadlineTag from "@/components/common/DeadlineTag";
@@ -15,7 +16,7 @@ const GatheringImage = ({ id }: IGatheringImageProps) => {
 
   return (
     <figure className="relative min-h-[270px] flex-1 overflow-hidden rounded-3xl bg-gray-300">
-      <DeadlineTag registrationEnd={new Date(data?.registrationEnd ?? "")} />
+      <DeadlineTag registrationEnd={dayjs(data?.registrationEnd)} />
       <Image
         src={data.image || "/images/gathering_default.png"}
         alt="gathering-image"

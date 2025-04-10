@@ -41,6 +41,7 @@ const config: Config = {
     "**/components/**/*.[jt]s?(x)",
     "**/stores/**/*.[jt]s?(x)",
     "src/utils/**/*.[jt]s?(x)",
+    "src/app/mypage/_components/**/*.[jt]s?(x)",
 
     "!**/components/skeletons/**/*.[jt]s?(x)",
     "!**/*.stories.[jt]s?(x)",

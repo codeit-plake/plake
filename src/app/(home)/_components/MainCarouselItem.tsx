@@ -25,7 +25,7 @@ const MainCarouselItem = ({ gathering }: IMainCarouselItemProps) => {
         />
       </div>
       <p className="line-clamp-1 font-medium text-gray-900">{gathering.name}</p>
-      <p className="text-sm text-gray-500">{gathering.location}</p>
+      <p className="text-sm text-gray-700">{gathering.location}</p>
       <DateTimeTag date={dayjs(gathering.dateTime)} />
     </Link>
   );

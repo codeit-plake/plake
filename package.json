@@ -32,7 +32,7 @@
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.13",
     "lodash": "^4.17.21",
-    "lottie-react": "^2.4.1",
+    "lottie-light-react": "^2.4.0",
     "lucide-react": "^0.479.0",
     "motion": "^12.5.0",
     "next": "14.2.24",
@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
+    "@next/bundle-analyzer": "^15.3.0",
     "@storybook/addon-essentials": "^8.6.4",
     "@storybook/addon-onboarding": "^8.6.4",
     "@storybook/blocks": "^8.6.4",

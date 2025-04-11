@@ -1,12 +1,22 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 
-import TokenValidator from "@/components/auth/TokenValidator";
-import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import QueryProvider from "@/components/providers/QueryProvider";
 import { FONT } from "@/constants/font";
+
+const TokenValidator = dynamic(
+  () => import("@/components/auth/TokenValidator"),
+  {
+    ssr: false,
+  },
+);
+
+const Footer = dynamic(() => import("@/components/layout/Footer"), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: "PLAKE",

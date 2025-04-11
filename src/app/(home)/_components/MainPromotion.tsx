@@ -1,9 +1,12 @@
 import clsx from "clsx";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/Button";
 
-import MainAnimation from "./animations/MainAnimation";
+const MainAnimation = dynamic(() => import("./animations/MainAnimation"), {
+  ssr: false,
+});
 
 interface IMainPromotionProps {
   type: "offline" | "online";
@@ -31,7 +34,11 @@ const MainPromotion = ({ type }: IMainPromotionProps) => {
           <p>{"원하는 주제의 모임을 \n 집에서 편하게 즐겨보세요"}</p>
         )}
         <Link href={`/gathering/${type}`}>
-          <Button variant="purple" className="px-12 py-8 text-2xl font-bold">
+          <Button
+            variant="purple"
+            className="px-12 py-8 text-2xl font-bold"
+            aria-label={`${type} 모임 찾아보기`}
+          >
             {type === "offline"
               ? "오프라인 모임 찾아보기"
               : "온라인 모임 찾아보기"}

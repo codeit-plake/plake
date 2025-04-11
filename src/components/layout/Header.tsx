@@ -66,6 +66,8 @@ const Header = () => {
               alt="logo-image"
               width={70}
               height={15}
+              sizes="70px"
+              priority
             />
           </Link>
           <div className="hidden md:flex">

@@ -22,7 +22,10 @@ const SideBar = () => {
   const { user } = useUserStore(useShallow(state => ({ user: state.user })));
   return (
     <Sheet open={isOpen} onOpenChange={onToggleSideBar}>
-      <SheetTrigger onClick={() => onToggleSideBar(!isOpen)}>
+      <SheetTrigger
+        onClick={() => onToggleSideBar(!isOpen)}
+        aria-label="mobile-menu-button"
+      >
         <RxHamburgerMenu
           size={20}
           color="black"

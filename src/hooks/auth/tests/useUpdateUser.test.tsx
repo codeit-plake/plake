@@ -48,10 +48,6 @@ describe("useUpdateUser", () => {
   const mockFormData = new FormData();
   const updatedUser = { id: 123, name: "updated user" };
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   it("성공적으로 유저 정보를 업데이트하면 updateUserState가 호출된다.", async () => {
     (authService.updateUser as jest.Mock).mockResolvedValue(updatedUser);
 

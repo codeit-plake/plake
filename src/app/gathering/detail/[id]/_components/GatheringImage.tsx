@@ -18,7 +18,7 @@ const GatheringImage = ({ id }: IGatheringImageProps) => {
     <figure className="relative min-h-[270px] flex-1 overflow-hidden rounded-3xl bg-gray-300">
       <DeadlineTag registrationEnd={dayjs(data?.registrationEnd)} />
       <Image
-        src={data.image || "/images/gathering_default.png"}
+        src={data.image || "/images/gathering_default.jpeg"}
         alt="gathering-image"
         fill
         sizes="(max-width: 768px) 90vw, 40vw"

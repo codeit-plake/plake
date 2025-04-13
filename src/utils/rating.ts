@@ -26,7 +26,7 @@ export const calculateRatingValues = (rating: number): IRatingValues => {
   };
 };
 
-export const getBoundingRect = (event: React.MouseEvent<HTMLDivElement>) => {
+export const getBoundingRect = (event: React.MouseEvent<HTMLButtonElement>) => {
   const rect = event.currentTarget.getBoundingClientRect();
   const x = event.clientX - rect.left;
   return { rect, x };
@@ -45,7 +45,7 @@ export const createRatingHandler = ({
   onRatingChange,
   isEditable = true,
 }: ICreateRatingHandlerProps) => {
-  return (event: React.MouseEvent<HTMLDivElement>, baseIndex: number) => {
+  return (event: React.MouseEvent<HTMLButtonElement>, baseIndex: number) => {
     if (!isEditable || !onRatingChange) return;
 
     const { rect, x } = getBoundingRect(event);

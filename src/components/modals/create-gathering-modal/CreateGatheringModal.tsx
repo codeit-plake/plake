@@ -5,6 +5,7 @@ import { useForm, useWatch } from "react-hook-form";
 
 import Dropdown from "@/components/common/Dropdown";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
+import AlertModal from "@/components/modals/confirm-alert-modal/AlertModal";
 import DateTimeAndEndTimePicker from "@/components/modals/create-gathering-modal/DateTimeAndEndTimePicker";
 import Modal from "@/components/modals/Modal";
 import { Button } from "@/components/ui/Button";
@@ -20,8 +21,6 @@ import {
   CreateGatheringFormType,
 } from "@/schemas/gatheringSchema";
 import { createFormDataFromObject } from "@/utils/form";
-
-import AlertModal from "../confirm-alert-modal/AlertModal";
 
 const labelTitleStyle = "text-base font-semibold text-gray-800";
 const errorMsgStyle = "text-sm font-semibold text-red-600";
@@ -60,8 +59,12 @@ const CreateGatheringModal = ({
     defaultValue: GATHERING_FORM.location,
   });
 
-  const { handleCreateGathering, isPending, isError, isSuccess } =
-    useCreateGathering();
+  const {
+    mutate: handleCreateGathering,
+    isPending,
+    isError,
+    isSuccess,
+  } = useCreateGathering();
 
   const onSubmit = (data: CreateGatheringFormType) => {
     const formData = createFormDataFromObject(data);

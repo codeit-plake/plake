@@ -4,7 +4,6 @@ import { useScrollToTopOnValueChange } from "@/hooks/useScrollToTopOnValueChange
 
 describe("useScrollToTopOnValueChange 테스트", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
     // window.scrollTo 모킹
     window.scrollTo = jest.fn();
   });

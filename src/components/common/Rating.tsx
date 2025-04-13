@@ -30,25 +30,22 @@ const Rating = ({
   });
 
   return (
-    <div
-      className={clsx(
-        "flex items-center gap-2",
-        isEditable && "cursor-pointer",
-      )}
-    >
+    <div className={clsx("flex items-center gap-2")} aria-label="별점">
       {Array.from({ length: totalHearts }).map((_, index) => (
-        <div
+        <button
           key={index}
           onClick={e => handleRatingChange(e, index)}
-          className={clsx(isEditable && "cursor-pointer")}
+          className={clsx(isEditable ? "cursor-pointer" : "cursor-default")}
           data-testid={`rating-heart-${index + 1}`}
+          aria-label="rating-button"
         >
           <FaHeart
+            data-testid="heart-icon"
             className={
               index < roundedRating ? HEART_COLOR.filled : HEART_COLOR.empty
             }
           />
-        </div>
+        </button>
       ))}
     </div>
   );

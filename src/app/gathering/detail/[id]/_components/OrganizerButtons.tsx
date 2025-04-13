@@ -19,8 +19,9 @@ const OrganizerButtons = ({
   const { isOpen, onClose, onOpen } = useModal();
   const [modalType, setModalType] = useState<"cancel" | "copy" | null>(null);
 
-  const { handleCancelGathering, error: cancelError } = useCancelGathering(id);
-  const { handleCopyLink, copyError } = useCopyLink();
+  const { mutate: handleCancelGathering, isError: isCancelError } =
+    useCancelGathering(id);
+  const { handleCopyLink, isCopyError } = useCopyLink();
 
   const openModal = (type: "cancel" | "copy") => {
     setModalType(type);
@@ -43,7 +44,7 @@ const OrganizerButtons = ({
         {"공유하기"}
       </Button>
       {modalType === "cancel" &&
-        (cancelError || copyError ? (
+        (isCancelError || isCopyError ? (
           <AlertModal
             title="잠시 후 다시 시도해주세요."
             isOpen={isOpen}

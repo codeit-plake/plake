@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { memo } from "react";
 import { useShallow } from "zustand/shallow";
 
 import Avatar from "@/components/common/Avatar";
@@ -13,7 +14,7 @@ type TReviewCardItemProps = {
   review: IReview;
 };
 
-const ReviewCardItem = ({ review }: TReviewCardItemProps) => {
+const ReviewCardItem = memo(({ review }: TReviewCardItemProps) => {
   const { comment, createdAt, score, User, Gathering } = review;
   const { user } = useUserStore(useShallow(state => ({ user: state.user })));
   const pathName = usePathname();
@@ -75,6 +76,8 @@ const ReviewCardItem = ({ review }: TReviewCardItemProps) => {
       </Link>
     </div>
   );
-};
+});
+
+ReviewCardItem.displayName = "ReviewCardItem";
 
 export default ReviewCardItem;

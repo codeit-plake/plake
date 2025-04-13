@@ -12,4 +12,6 @@ export const popularGatheringsQueryOption = () =>
         sortOrder: "desc",
       });
     },
+    throwOnError: true,
+    retry: false,
   });

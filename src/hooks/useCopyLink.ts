@@ -20,7 +20,7 @@ const useCopyLink = () => {
     }
   };
 
-  return { handleCopyLink, copyError };
+  return { handleCopyLink, isCopyError: !!copyError, copyError };
 };
 
 export default useCopyLink;

@@ -3,10 +3,6 @@ import { renderHook } from "@testing-library/react";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
 describe("useClickOutside 테스트", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   const mockHandler = jest.fn();
   const mockRef = {
     current: document.createElement("div"),

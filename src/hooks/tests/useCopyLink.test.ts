@@ -37,8 +37,8 @@ describe("useCopyLink", () => {
     expect(mockClipboard.writeText).toHaveBeenCalledWith(
       `${mockOrigin}${mockPathname}`,
     );
-    // 에러가 null이어야 함
-    expect(result.current.copyError).toBeNull();
+    // isCopyError가 false여야 함
+    expect(result.current.isCopyError).toBe(false);
   });
 
   it("클립보드 복사 실패 시 에러를 설정해야 함", async () => {
@@ -53,8 +53,8 @@ describe("useCopyLink", () => {
 
     // clipboard.writeText가 호출되었는지 확인
     expect(mockClipboard.writeText).toHaveBeenCalled();
-    // 에러가 설정되었는지 확인
-    expect(result.current.copyError).toEqual(mockError);
+    // isCopyError가 true여야 함
+    expect(result.current.isCopyError).toBe(true);
   });
 
   it("일반 객체 에러를 Error 인스턴스로 변환해야 함", async () => {
@@ -68,7 +68,7 @@ describe("useCopyLink", () => {
     });
 
     // 에러 확인
-    expect(result.current.copyError).toBeInstanceOf(Error);
+    expect(result.current.isCopyError).toBe(true);
     expect(result.current.copyError?.message).toBe(
       "알 수 없는 오류가 발생했습니다",
     );
@@ -82,7 +82,7 @@ describe("useCopyLink", () => {
     await act(async () => {
       await result.current.handleCopyLink();
     });
-    expect(result.current.copyError).not.toBeNull();
+    expect(result.current.isCopyError).toBe(true);
 
     // 성공
     mockClipboard.writeText.mockResolvedValueOnce(undefined);
@@ -91,6 +91,6 @@ describe("useCopyLink", () => {
     });
 
     // 성공 이후 에러가 초기화되었는지 확인
-    expect(result.current.copyError).toBeNull();
+    expect(result.current.isCopyError).toBe(false);
   });
 });

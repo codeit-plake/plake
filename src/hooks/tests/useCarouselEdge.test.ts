@@ -13,7 +13,6 @@ describe("useCarouselEdge 테스트", () => {
   };
 
   beforeEach(() => {
-    jest.clearAllMocks();
     (useSwiper as jest.Mock).mockReturnValue(mockSwiper);
   });
 

@@ -4,7 +4,7 @@ import ConfirmModal from "@/components/modals/confirm-alert-modal/ConfirmModal";
 import { Button } from "@/components/ui/Button";
 import { QUERY_KEYS } from "@/constants/queryKeys";
 import { MY_CARD_ACTION_TEXT } from "@/constants/ui";
-import { useLeaveGatheringMutation } from "@/hooks/gathering/useJoinGathering";
+import { useLeaveGatheringMutation } from "@/hooks/gathering/useLeaveGathering";
 import { useModal } from "@/hooks/useModal";
 
 const MyCardCancelButton = ({ id }: { id: number }) => {

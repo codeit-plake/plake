@@ -93,6 +93,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <button
             type="button"
             tabIndex={-1}
+            aria-label="show-password-btn"
             onClick={togglePasswordVisibility}
             className="absolute right-[10px] top-9 bg-gray-50 pl-2 outline-none"
           >

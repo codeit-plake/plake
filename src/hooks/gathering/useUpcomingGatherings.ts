@@ -12,4 +12,6 @@ export const upcomingGatheringsQueryOption = () =>
         sortOrder: "asc",
       });
     },
+    throwOnError: true,
+    retry: false,
   });

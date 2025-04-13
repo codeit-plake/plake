@@ -2,7 +2,7 @@ import { fireEvent, screen } from "@testing-library/react";
 
 import MyCardCancelButton from "@/app/mypage/_components/my-card-item/actions/MyCardCancelButton";
 import { MY_CARD_ACTION_TEXT } from "@/constants/ui";
-import { useLeaveGatheringMutation as _useLeaveGatheringMutation } from "@/hooks/gathering/useJoinGathering";
+import { useLeaveGatheringMutation as _useLeaveGatheringMutation } from "@/hooks/gathering/useLeaveGathering";
 import { useModal } from "@/hooks/useModal";
 import { renderWithClient } from "@/utils/test-utils/renderWithClient";
 
@@ -13,7 +13,7 @@ const mockModalHook = {
   onOpen: jest.fn(),
 };
 
-jest.mock("@/hooks/gathering/useJoinGathering");
+jest.mock("@/hooks/gathering/useLeaveGathering");
 jest.mock("@/hooks/useModal", () => ({
   useModal: jest.fn(),
 }));

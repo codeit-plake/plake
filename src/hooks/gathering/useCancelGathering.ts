@@ -8,7 +8,7 @@ export const useCancelGathering = (id: string) => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  const { mutate, error } = useMutation({
+  return useMutation({
     mutationFn: async () => {
       return gatheringService.deleteGathering(id);
     },
@@ -18,10 +18,8 @@ export const useCancelGathering = (id: string) => {
       });
       router.back();
     },
-    onError: () => {
+    onError: error => {
       console.log("모임 취소 실패", error);
     },
   });
-
-  return { handleCancelGathering: mutate, error };
 };

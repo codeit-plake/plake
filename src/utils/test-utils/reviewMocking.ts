@@ -1,5 +1,5 @@
 import { GatheringType, IGathering } from "@/types/gathering";
-import { IReview } from "@/types/review";
+import { IReview, IReviewResponse } from "@/types/review";
 import { mockUserStore } from "@/utils/test-utils/userMocking";
 
 export const mockGathering = (overrides = {}): IGathering => {
@@ -48,4 +48,11 @@ export const mockReviews = (count = 3): IReview[] => {
       id: index + 1,
     });
   });
+};
+
+export const mockResponse: IReviewResponse = {
+  data: mockReviews(),
+  currentPage: 1,
+  totalPages: 3,
+  totalItemCount: 10,
 };

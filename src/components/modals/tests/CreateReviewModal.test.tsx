@@ -54,9 +54,7 @@ describe("CreateReviewModal", () => {
       target: { value: "좋은 경험이었어요!" },
     });
 
-    const submitButton = await screen.findByRole("button", {
-      name: "리뷰 등록",
-    });
+    const submitButton = screen.getByRole("button", { name: "리뷰 등록" });
 
     await waitFor(() => {
       expect(submitButton).not.toBeDisabled();

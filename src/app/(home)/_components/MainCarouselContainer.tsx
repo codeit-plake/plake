@@ -6,8 +6,8 @@ import {
 
 import FetchBoundary from "@/components/boundary/FetchBoundary";
 import MainCarouselSkeleton from "@/components/skeletons/MainCarouselSkeleton";
-import { upcomingGatheringsQueryOption } from "@/hooks/gathering/useLatestGatherings";
 import { popularGatheringsQueryOption } from "@/hooks/gathering/usePopularGatherings";
+import { upcomingGatheringsQueryOption } from "@/hooks/gathering/useUpcomingGatherings";
 
 import PopularCarousel from "./PopularCarousel";
 import UpcomingCarousel from "./UpcomingCarousel";

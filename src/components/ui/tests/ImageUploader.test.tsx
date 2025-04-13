@@ -6,10 +6,6 @@ import ImageUploader from "@/components/ui/ImageUploader";
 describe("ImageUploader 컴포넌트 테스트", () => {
   const mockSetValue = jest.fn();
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   it("기본값이 제대로 렌더링되어야 함", () => {
     render(<ImageUploader setValue={mockSetValue} />);
 

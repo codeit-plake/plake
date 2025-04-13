@@ -17,7 +17,7 @@ const MainCardImage = ({
   return (
     <div className="relative h-[156px] w-full min-w-[280px] md:w-[280px] lg:w-[280px]">
       <Image
-        src={image || "/images/gathering_default.png"}
+        src={image || "/images/gathering_default.jpeg"}
         alt={image ? name : "모임 기본 이미지"}
         className="h-full w-full object-cover"
         fill

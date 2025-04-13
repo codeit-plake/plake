@@ -8,12 +8,7 @@ export const useCreateGathering = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
 
-  const {
-    mutate: createGathering,
-    isPending,
-    isError,
-    isSuccess,
-  } = useMutation({
+  return useMutation({
     mutationFn: async (data: FormData) => {
       return gatheringService.createGathering(data);
     },
@@ -32,10 +27,4 @@ export const useCreateGathering = () => {
       console.error("모임 생성 실패:", error);
     },
   });
-
-  const handleCreateGathering = (data: FormData) => {
-    createGathering(data);
-  };
-
-  return { handleCreateGathering, isPending, isError, isSuccess };
 };

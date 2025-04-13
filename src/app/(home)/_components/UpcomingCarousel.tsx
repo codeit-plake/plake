@@ -2,7 +2,7 @@
 
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-import { upcomingGatheringsQueryOption } from "@/hooks/gathering/useLatestGatherings";
+import { upcomingGatheringsQueryOption } from "@/hooks/gathering/useUpcomingGatherings";
 
 import MainCarousel from "./MainCarousel";
 

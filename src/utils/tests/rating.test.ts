@@ -77,7 +77,7 @@ describe("Rating Utilities Test", () => {
           }),
         },
         clientX: 60,
-      } as unknown as React.MouseEvent<HTMLDivElement>;
+      } as unknown as React.MouseEvent<HTMLButtonElement>;
 
       handler(mockEvent, 2);
       expect(mockRatingChange).toHaveBeenCalledWith(3);
@@ -98,7 +98,7 @@ describe("Rating Utilities Test", () => {
           }),
         },
         clientX: 75,
-      } as unknown as React.MouseEvent<HTMLDivElement>;
+      } as unknown as React.MouseEvent<HTMLButtonElement>;
 
       handler(mockEvent, 2);
       expect(mockOnRatingChange).not.toHaveBeenCalled();
@@ -115,7 +115,7 @@ describe("Rating Utilities Test", () => {
           }),
         },
         clientX: 75,
-      } as unknown as React.MouseEvent<HTMLDivElement>;
+      } as unknown as React.MouseEvent<HTMLButtonElement>;
 
       const { x } = getBoundingRect(mockEvent);
       expect(x).toBe(25);

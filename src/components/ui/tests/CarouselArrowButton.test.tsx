@@ -16,8 +16,6 @@ describe("CarouselArrowButton 테스트", () => {
   };
 
   beforeEach(() => {
-    jest.clearAllMocks();
-
     mockSwiper = {
       slidePrev: jest.fn(),
       slideNext: jest.fn(),

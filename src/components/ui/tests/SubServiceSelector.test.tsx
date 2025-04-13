@@ -7,10 +7,6 @@ describe("SubServiceSelector", () => {
   const mockOnClickTab = jest.fn();
   const subServices = SUB_SERVICE_LIST.OFFLINE;
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   it("컴포넌트가 정상적으로 렌더링 되어야 함", () => {
     render(
       <SubServiceSelector selectedSubService="" onClickTab={mockOnClickTab} />,

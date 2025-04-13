@@ -2,6 +2,7 @@
 
 import dayjs from "dayjs";
 import Link from "next/link";
+import { memo } from "react";
 
 import { IGathering } from "@/types/gathering";
 
@@ -13,7 +14,7 @@ interface IMainCardItemProps {
   gathering: IGathering;
 }
 
-const MainCardItem = ({ gathering }: IMainCardItemProps) => {
+const MainCardItem = memo(({ gathering }: IMainCardItemProps) => {
   const {
     id,
     name,
@@ -51,6 +52,8 @@ const MainCardItem = ({ gathering }: IMainCardItemProps) => {
       </div>
     </article>
   );
-};
+});
+
+MainCardItem.displayName = "MainCardItem";
 
 export default MainCardItem;

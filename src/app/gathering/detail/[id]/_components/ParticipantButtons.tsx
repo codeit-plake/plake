@@ -4,10 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import AlertModal from "@/components/modals/confirm-alert-modal/AlertModal";
 import ConfirmModal from "@/components/modals/confirm-alert-modal/ConfirmModal";
 import { Button } from "@/components/ui/Button";
-import {
-  useJoinGatheringMutation,
-  useLeaveGatheringMutation,
-} from "@/hooks/gathering/useJoinGathering";
+import { useJoinGatheringMutation } from "@/hooks/gathering/useJoinGathering";
+import { useLeaveGatheringMutation } from "@/hooks/gathering/useLeaveGathering";
 import { useModal } from "@/hooks/useModal";
 
 const ALERT_MESSAGE = {

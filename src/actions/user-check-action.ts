@@ -17,13 +17,15 @@ const userCheckAction = async () => {
       },
     );
 
+    // 유저 정보 확인 실패
     if (!response.ok) {
       throw new Error(await response.text());
     }
 
-    // 유저 정보 받아와서 image null 처리
+    // 유저 정보 확인 성공 시 image null 처리
     const resUser: IUser = await response.json();
     resUser.image = resUser.image || "";
+
     return {
       status: true,
       user: resUser,

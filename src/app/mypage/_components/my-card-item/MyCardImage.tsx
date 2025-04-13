@@ -9,7 +9,7 @@ const MyCardImage = ({ image, name }: MyCardImageProps) => {
   return (
     <div className="relative h-[156px] w-full min-w-[280px] sm:w-[280px]">
       <Image
-        src={image || "/images/gathering_default.png"}
+        src={image || "/images/gathering_default.jpeg"}
         alt={name}
         className="h-full w-full rounded-3xl object-cover"
         fill

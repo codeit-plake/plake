@@ -7,10 +7,6 @@ describe("ServiceSelector", () => {
   const mockSetTypeValue = jest.fn();
   const mockSetLocationValue = jest.fn();
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   describe("기본 렌더링 테스트", () => {
     it("모든 서비스 타입이 화면에 표시되어야 함", () => {
       render(

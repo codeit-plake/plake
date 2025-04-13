@@ -15,7 +15,7 @@ export const useCreateReview = () => {
       });
     },
     onError: error => {
-      console.error("모임 생성 실패:", error);
+      console.error("리뷰 생성 실패:", error);
     },
   });
 

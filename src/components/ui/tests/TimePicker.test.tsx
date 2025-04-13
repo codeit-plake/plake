@@ -6,10 +6,6 @@ describe("TimePicker 컴포넌트 테스트", () => {
   const mockSetValue = jest.fn();
   const mockSelectedDate = new Date("2024-03-20");
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   describe("렌더링 테스트", () => {
     it("기본값이 제대로 렌더링되어야 함", () => {
       render(

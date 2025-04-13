@@ -4,7 +4,6 @@ import LoadingDots from "@/components/common/LoadingDots";
 
 const Page = async () => {
   return (
-    // TODO: MyCardSkeleton Component 제작 및 적용
     <FetchBoundary fallback={<LoadingDots />}>
       <MyCardList />
     </FetchBoundary>

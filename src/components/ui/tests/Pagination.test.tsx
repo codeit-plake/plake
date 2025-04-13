@@ -5,10 +5,6 @@ import Pagination from "@/components/ui/Pagination";
 describe("Pagination 컴포넌트 테스트", () => {
   const onPageChange = jest.fn();
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   describe("렌더링 테스트", () => {
     it("페이지네이션이 totalPage가 0이면 렌더링되지 않음", () => {
       const { container } = render(

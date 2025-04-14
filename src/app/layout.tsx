@@ -21,6 +21,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="preconnect"
+          href="https://fe-adv-project-together-dallaem.vercel.app"
+        />
+        <link
+          rel="preconnect"
+          href="https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/together-dallaem"
+        />
+      </head>
       <body className={`${FONT.variable} antialiased`} suppressHydrationWarning>
         <QueryProvider>
           <Header />

@@ -54,7 +54,7 @@ const ReviewListParent = () => {
           <ReviewCardList reviews={flatData} />
           <div ref={setTarget} className="h-10 w-full">
             {isFetchingNextPage && (
-              <div className="flex justify-center p-4">
+              <div className="flex justify-center py-8">
                 <LoadingSpinner size="lg" />
               </div>
             )}

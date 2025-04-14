@@ -1,31 +1,26 @@
 "use server";
 
 import { IUser } from "@/types/user";
-import { getCookieOfToken } from "@/utils/cookieToken";
 
-const userCheckAction = async () => {
-  const TOKEN = await getCookieOfToken();
-
+const userCheckAction = async (token: string) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/auths/user`,
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${TOKEN}`,
+          Authorization: `Bearer ${token}`,
         },
       },
     );
 
-    // 유저 정보 확인 실패
     if (!response.ok) {
       throw new Error(await response.text());
     }
 
-    // 유저 정보 확인 성공 시 image null 처리
+    // 유저 정보 받아와서 image null 처리
     const resUser: IUser = await response.json();
     resUser.image = resUser.image || "";
-
     return {
       status: true,
       user: resUser,

@@ -12,7 +12,7 @@ const MainReviewContent = () => {
         <div className="flex flex-col items-center justify-center gap-5 sm:flex-row">
           <Image
             src="/images/logo.png"
-            alt="logo"
+            alt="logo-image"
             width={130}
             height={60}
             sizes="130px"

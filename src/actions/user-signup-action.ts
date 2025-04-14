@@ -21,12 +21,10 @@ const userSignUpAction = async (_: any, formData: FormData) => {
       },
     );
 
-    // 회원가입 실패
     if (!response.ok) {
       throw new Error(await response.text());
     }
 
-    // 회원가입 성공
     return {
       status: true,
       error: "",

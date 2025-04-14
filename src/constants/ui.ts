@@ -1,3 +1,32 @@
+// 메인 배너 아이템
+import mainBanner1 from "@/assets/images/main_slide1.jpg";
+import mainBanner2 from "@/assets/images/main_slide2.jpg";
+import mainBanner3 from "@/assets/images/main_slide3.jpg";
+import mainBanner4 from "@/assets/images/main_slide4.jpg";
+
+export const MAIN_BANNER_ITEMS = [
+  {
+    image: mainBanner1,
+    text: "러닝",
+    link: "/gathering/offline?type=exercise",
+  },
+  {
+    image: mainBanner2,
+    text: "게임",
+    link: "/gathering/online",
+  },
+  {
+    image: mainBanner3,
+    text: "음악",
+    link: "/gathering/offline?type=art",
+  },
+  {
+    image: mainBanner4,
+    text: "치맥",
+    link: "/gathering/offline?type=dining",
+  },
+] as const;
+
 // 메인 탭
 export const MAIN_TAB = [
   { name: "오프라인", value: "", href: "/gathering/offline" },

@@ -30,7 +30,7 @@ const ReviewCardItem = memo(({ review }: TReviewCardItemProps) => {
         href={`/gathering/detail/${Gathering.id}`}
         style={{ display: "contents" }}
       >
-        <div className="relative min-h-[156px] w-full max-w-[280px] overflow-hidden rounded-3xl">
+        <div className="relative min-h-[156px] w-full overflow-hidden rounded-3xl md:max-w-[280px]">
           <Image
             src={Gathering.image ?? "https://picsum.photos/500/700"}
             alt={Gathering.name}

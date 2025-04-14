@@ -2,34 +2,30 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import mainBanner1 from "@/assets/images/main_slide1.jpg";
-import mainBanner2 from "@/assets/images/main_slide2.jpg";
-import mainBanner3 from "@/assets/images/main_slide3.jpg";
-import mainBanner4 from "@/assets/images/main_slide4.jpg";
-
-const slideImages = [mainBanner1, mainBanner2, mainBanner3, mainBanner4];
-const animatedTexts = ["러닝", "게임", "음악", "치맥"];
-
-console.log(slideImages[0]);
+import { MAIN_BANNER_ITEMS } from "@/constants/ui";
 
 const MainBanner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % slideImages.length);
+      setCurrentIndex(prev => (prev + 1) % MAIN_BANNER_ITEMS.length);
     }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative h-[50vh] max-h-[500px] w-full overflow-hidden bg-gray-500 md:h-[90vh] md:max-h-[1080px]">
+    <Link
+      href={MAIN_BANNER_ITEMS[currentIndex].link}
+      className="relative h-[50vh] max-h-[500px] w-full overflow-hidden bg-gray-500 md:h-[90vh] md:max-h-[1080px]"
+    >
       {/* 이미지 슬라이드 영역 */}
       <div className="relative h-full w-full">
-        {slideImages.map((img, index) => (
+        {MAIN_BANNER_ITEMS.map((item, index) => (
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ${
@@ -37,8 +33,8 @@ const MainBanner = () => {
             }`}
           >
             <Image
-              src={img}
-              alt={`main_banner_${animatedTexts[index]}`}
+              src={item.image}
+              alt={`main_banner_${item.text}`}
               fill
               sizes="(max-width: 1280px) 100vw, 1280px"
               className="object-cover"
@@ -64,14 +60,14 @@ const MainBanner = () => {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 className="block"
               >
-                {animatedTexts[currentIndex]}
+                {MAIN_BANNER_ITEMS[currentIndex].text}
               </motion.span>
             </AnimatePresence>
           </span>
           {" 어떠세요?"}
         </p>
       </div>
-    </section>
+    </Link>
   );
 };
 

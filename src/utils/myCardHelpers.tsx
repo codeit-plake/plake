@@ -17,7 +17,7 @@ export const getStatusProps = (gathering: IMyGathering): StatusProps[] => {
     return [
       {
         label: "이용 예정",
-        className: "bg-purple-100 text-purple-600",
+        className: "bg-purple-200 text-purple-600",
       },
       {
         label: "개설 확정",
@@ -30,7 +30,7 @@ export const getStatusProps = (gathering: IMyGathering): StatusProps[] => {
   return [
     {
       label: "이용 예정",
-      className: "bg-purple-100 text-purple-600",
+      className: "bg-purple-200 text-purple-600",
     },
     {
       label: "개설 대기",

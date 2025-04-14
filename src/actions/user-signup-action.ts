@@ -9,34 +9,31 @@ const userSignUpAction = async (_: any, formData: FormData) => {
 
   const userData = { email, name, companyName, password };
 
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/auths/signup`,
-      {
-        method: "POST",
-        body: JSON.stringify(userData),
-        headers: {
-          "Content-Type": "application/json",
-        },
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/auths/signup`,
+    {
+      method: "POST",
+      body: JSON.stringify(userData),
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+    },
+  );
 
-    // 회원가입 실패
-    if (!response.ok) {
-      throw new Error(await response.text());
-    }
-
-    // 회원가입 성공
-    return {
-      status: true,
-      error: "",
-    };
-  } catch (err) {
+  // 회원가입 실패
+  if (!response.ok) {
+    // throw new Error(await response.text());
     return {
       status: false,
-      error: `${(err as Error).message}`,
+      error: await response.text(),
     };
   }
+
+  // 회원가입 성공
+  return {
+    status: true,
+    error: "",
+  };
 };
 
 export default userSignUpAction;

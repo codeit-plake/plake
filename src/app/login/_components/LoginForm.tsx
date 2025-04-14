@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useFormState } from "react-dom";
+// import { useFormState } from "react-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -18,6 +18,7 @@ import useFavorite from "@/hooks/useFavorite";
 import { useModal } from "@/hooks/useModal";
 import { LoginFormSchema } from "@/schemas/loginJoinSchema";
 import useUserStore from "@/stores/useUserStore";
+import { IUser } from "@/types/user";
 
 import {
   IRegisterWithValidation,
@@ -41,17 +42,59 @@ const LoginForm = () => {
 
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitAttempted, setSubmitAttempted] = useState(false); // 추가: 폼 제출 시도 추적
+
   const [alertMessage, setAlertMessage] = useState("");
-  const [state, formAction] = useFormState(userSignInAction, null);
+  // const [state, formAction] = useFormState(userSignInAction, {
+  //   status: false,
+  //   error: "",
+  //   user: null,
+  // });
+
+  const [authState, setAuthState] = useState<
+    | { status: boolean; error: string; user: null }
+    | { status: boolean; error: string; user: IUser }
+  >({
+    status: false,
+    error: "",
+    user: null,
+  });
 
   const { setUserState } = useUserStore();
   const { isOpen, onClose, onOpen } = useModal();
 
   const { setFavoriteInitValue } = useFavorite();
 
+  // 디버깅용 로거 추가
   useEffect(() => {
-    if (state && !state.status && !state.user) {
-      const error: TErrorMsg = JSON.parse(state.error);
+    console.log("isSubmitting 변경:", isSubmitting);
+    console.log("submitAttempted 변경:", submitAttempted);
+  }, [isSubmitting, submitAttempted]);
+
+  useEffect(() => {
+    console.log("authState 변경:", authState);
+
+    // 폼 제출 시도가 없었다면 처리 건너뛰기
+    if (!submitAttempted) {
+      console.log("폼 제출 시도 없음, 처리 건너뜀");
+      return;
+    }
+
+    // 로딩 중이 아니면서 초기 상태라면 처리하지 않음
+    if (
+      !isSubmitting &&
+      authState.error === "" &&
+      !authState.status &&
+      !authState.user
+    ) {
+      console.log("로딩 중이 아님 & 초기 상태, 처리 건너뜀");
+      return;
+    }
+
+    console.log("상태 처리 시작");
+
+    if (!authState.status && !authState.user && authState.error) {
+      const error: TErrorMsg = JSON.parse(authState.error);
 
       if (error.code === "SERVER_ERROR" || error.code === "INVALID_TOKEN") {
         setAlertMessage(error.message);
@@ -66,28 +109,54 @@ const LoginForm = () => {
           { shouldFocus: true },
         );
       }
+      console.log("error", error);
       setIsSubmitting(false);
-    } else if (state && state.status && state.user) {
-      setUserState(state.user);
+    } else if (authState.status && authState.user) {
+      setUserState(authState.user);
 
       // 로그인 유저의 즐겨찾기 목록 가져오기
-      setFavoriteInitValue(state.user?.email);
+      setFavoriteInitValue(authState.user?.email);
 
       router.replace("/");
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state, setError, router, setUserState, onOpen]);
+  }, [authState, isSubmitting, submitAttempted]);
 
-  const onSubmit = handleSubmit(data => {
+  const onSubmit = handleSubmit(async data => {
     setIsSubmitting(true);
+    setSubmitAttempted(true);
+
     const formData = new FormData();
 
     Object.entries(data).forEach(([key, value]) => {
       formData.append(key, value as string);
     });
 
-    formAction(formData);
+    try {
+      console.log("서버 액션 호출 시작");
+      // setTimeout 대신 Promise 사용
+      await userSignInAction(null, formData).then(result => {
+        console.log("서버 액션 결과:", result);
+
+        // 상태 업데이트를 Promise로 처리
+        Promise.resolve().then(() => {
+          console.log("상태 업데이트 시도", result);
+          setAuthState(result); // 직접 설정
+        });
+      });
+    } catch (error) {
+      console.error("서버 액션 오류:", error);
+      setAuthState({
+        status: false,
+        error: JSON.stringify({
+          code: "CLIENT_ERROR",
+          message: "로그인 처리 중 오류가 발생했습니다.",
+        }),
+        user: null,
+      });
+      setIsSubmitting(false);
+    }
   });
 
   const registerWithValidation = (

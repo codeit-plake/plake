@@ -40,7 +40,7 @@ const MainCardContent = ({
               {name}
             </p>
             <RxDividerVertical className="text-gray-900" />
-            <span className="ml-[3px] min-w-16 text-sm text-gray-700">
+            <span className="ml-[3px] min-w-14 text-sm text-gray-700">
               {location === ONLINE.location ? "온라인" : location}
             </span>
           </div>

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Banner = () => {
   return (
-    <div className="mt-10 flex items-center">
+    <div className="flex items-center">
       <div className="mr-14 flex items-center gap-[17px]">
         <Image
           src="/images/banner_introduce.png"
@@ -23,6 +23,7 @@ const Banner = () => {
         width={420}
         height={144}
         alt="배너 메인 이미지"
+        priority
       ></Image>
     </div>
   );

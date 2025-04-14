@@ -1,7 +1,10 @@
+import withBundleAnalyzer from "@next/bundle-analyzer";
 import { withSentryConfig } from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    deviceSizes: [640, 750, 828, 1080, 1280, 1920],
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -27,7 +30,12 @@ const nextConfig = {
   },
 };
 
-export default withSentryConfig(nextConfig, {
+const configWithBundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+  openAnalyzer: true,
+})(nextConfig);
+
+export default withSentryConfig(configWithBundleAnalyzer, {
   // For all available options, see:
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 

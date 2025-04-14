@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const FavoriteBanner = () => {
   return (
-    <section className="mb-8 mt-10 flex items-center gap-2">
+    <section className="mb-8 flex items-center gap-2">
       <Image
         priority
         src="/images/favorite_head.png"

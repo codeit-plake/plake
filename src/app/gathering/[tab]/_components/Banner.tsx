@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Banner = () => {
   return (
-    <div className="mt-10 flex items-center">
+    <div className="flex items-center">
       <div className="mr-14 flex items-center gap-[17px]">
         <Image
           src="/images/banner_introduce.png"

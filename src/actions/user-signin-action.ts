@@ -28,6 +28,10 @@ const userSignInAction = async (_: any, formData: FormData) => {
       throw new Error(await response.text());
     }
 
+    // 토큰을 받아오면 쿠키에 저장
+    const res = await response.json();
+    await setCookieOfToken(res.token);
+
     // 로그인 성공 시 유저 정보 확인
     const chkResult = await userCheckAction();
 
@@ -35,10 +39,6 @@ const userSignInAction = async (_: any, formData: FormData) => {
     if (!chkResult.status) {
       throw new Error(chkResult.error);
     }
-
-    // 성공시 쿠키에 토큰 저장
-    const res = await response.json();
-    await setCookieOfToken(res.token);
 
     // 유저 정보 반환
     return {

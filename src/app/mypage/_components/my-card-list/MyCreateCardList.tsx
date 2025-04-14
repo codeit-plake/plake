@@ -40,7 +40,7 @@ const MyCreateCardList = ({ userId }: MyCreateCardListProps) => {
         <MyCardItem
           key={gathering.id}
           id={gathering.id}
-          isLast={index === list.length - 1}
+          isLast={index === filteredList.length - 1}
         >
           <MyCardImage image={gathering.image} name={gathering.name} />
           <MyCardContent hasAction={true}>

@@ -37,7 +37,7 @@ const MyWrittenCardList = ({ userId }: MyWrittenCardListProps) => {
   }
 
   return (
-    <div className="my-6">
+    <div className="mt-6">
       <ReviewCardList reviews={list} />
       <div ref={setTarget} className="h-10 w-full">
         {isFetchingNextPage && (

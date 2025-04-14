@@ -1,7 +1,5 @@
 "use server";
 
-import { setCookieOfToken } from "@/utils/cookieToken";
-
 import userCheckAction from "./user-check-action";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
@@ -25,15 +23,16 @@ const userSignInAction = async (_: any, formData: FormData) => {
 
     // 토큰 받아오기 실패
     if (!response.ok) {
-      throw new Error(await response.text());
+      const errorText = await response.text();
+      console.error("API 응답 오류:", errorText);
+      throw new Error(errorText);
     }
 
     // 토큰을 받아오면 쿠키에 저장
     const res = await response.json();
-    await setCookieOfToken(res.token);
 
     // 유저 정보 확인
-    const chkResult = await userCheckAction();
+    const chkResult = await userCheckAction(res.token);
 
     // 유저 정보 확인 성공
     if (!chkResult.status) {

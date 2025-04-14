@@ -1,18 +1,15 @@
 "use server";
 
 import { IUser } from "@/types/user";
-import { getCookieOfToken } from "@/utils/cookieToken";
 
-const userCheckAction = async () => {
-  const TOKEN = await getCookieOfToken();
-
+const userCheckAction = async (token: string) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/auths/user`,
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${TOKEN}`,
+          Authorization: `Bearer ${token}`,
         },
       },
     );

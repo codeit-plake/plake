@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * #S701 보안: CSRF 토큰 검증 및 XSS 방지 처리 강화
+ * #P401 성능: 불필요한 리렌더링 최적화를 위한 메모이제이션 검토
+ */
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -24,9 +28,17 @@ import {
   TErrorMsg,
 } from "../../join/_components/JoinForm";
 
+/** #T501 타입: 로그인 폼 타입 정의 개선 및 문서화 */
 export type TLoginForm = z.infer<typeof LoginFormSchema>;
 
+/**
+ * #A301 접근성: 폼 유효성 검사 결과 스크린 리더 지원
+ * #E801 에러: 네트워크 오류 및 서버 응답 타임아웃 처리
+ * #U601 사용자 경험: 로그인 상태 유지 옵션 추가
+ * #S702 보안: 비밀번호 입력 시 자동완성 정책 검토
+ */
 const LoginForm = () => {
+  /** #T502 타입: react-hook-form 타입 안정성 강화 */
   const {
     register,
     handleSubmit,
@@ -49,6 +61,10 @@ const LoginForm = () => {
 
   const { setFavoriteInitValue } = useFavorite();
 
+  /**
+   * #E802 에러: 의존성 배열 최적화 및 cleanup 함수 추가
+   * #P402 성능: 상태 업데이트 로직 최적화
+   */
   useEffect(() => {
     if (state && !state.status && !state.user) {
       const error: TErrorMsg = JSON.parse(state.error);
@@ -79,6 +95,10 @@ const LoginForm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state, setError, router, setUserState, onOpen]);
 
+  /**
+   * #S703 보안: 폼 데이터 전송 전 sanitization 처리
+   * #E803 에러: 서버 응답 에러 상태 처리 개선
+   */
   const onSubmit = handleSubmit(data => {
     setIsSubmitting(true);
     const formData = new FormData();
@@ -90,6 +110,10 @@ const LoginForm = () => {
     formAction(formData);
   });
 
+  /**
+   * #P403 성능: 유효성 검사 로직 최적화
+   * #U602 사용자 경험: 실시간 유효성 검사 피드백 제공
+   */
   const registerWithValidation = (
     name: keyof TLoginForm,
   ): IRegisterWithValidation => {
@@ -108,12 +132,17 @@ const LoginForm = () => {
     };
   };
 
+  /** #P404 성능: 디바운스 시간 조정 및 성능 모니터링 */
   const debouncedValidation = useDebounce(fieldName => {
     trigger(fieldName);
   }, 500);
 
   return (
     <>
+      {/**
+       * #A302 접근성: 폼 레이아웃 및 키보드 탐색 개선
+       * #U603 사용자 경험: 로딩 상태 UI/UX 개선
+       */}
       <form onSubmit={onSubmit} className="flex flex-col gap-6">
         {LOGIN_INPUTS.map(input => (
           <Input

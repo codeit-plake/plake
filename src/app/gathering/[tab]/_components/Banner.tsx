@@ -23,6 +23,7 @@ const Banner = () => {
         width={420}
         height={144}
         alt="배너 메인 이미지"
+        priority
       ></Image>
     </div>
   );

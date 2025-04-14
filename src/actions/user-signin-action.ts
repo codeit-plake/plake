@@ -11,38 +11,48 @@ const userSignInAction = async (_: any, formData: FormData) => {
 
   const userData = { email, password };
 
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/auths/signin`,
-    {
-      method: "POST",
-      body: JSON.stringify(userData),
-      headers: {
-        "Content-Type": "application/json",
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/auths/signin`,
+      {
+        method: "POST",
+        body: JSON.stringify(userData),
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
-    },
-  );
+    );
 
-  // 로그인 실패
-  if (!response.ok) {
-    // throw new Error(await response.text());
+    // 토큰 받아오기 실패
+    if (!response.ok) {
+      throw new Error(await response.text());
+    }
+
+    // 토큰을 받아오면 쿠키에 저장
+    const res = await response.json();
+    await setCookieOfToken(res.token);
+
+    // 유저 정보 확인
+    const chkResult = await userCheckAction();
+
+    // 유저 정보 확인 성공
+    if (!chkResult.status) {
+      throw new Error(chkResult.error);
+    }
+
+    // 성공시 유저 정보 반환
+    return {
+      status: true,
+      error: "",
+      user: chkResult.user,
+    };
+  } catch (err) {
     return {
       status: false,
-      error: await response.text(),
+      error: `${(err as Error).message}`,
       user: null,
     };
   }
-
-  // 성공시 쿠키에 토큰 저장
-  const res = await response.json();
-  await setCookieOfToken(res.token);
-
-  await new Promise(resolve => setTimeout(resolve, 500));
-
-  // 로그인 성공 시 유저 정보 확인
-  const state = await userCheckAction();
-
-  console.log(state);
-  return state;
 };
 
 export default userSignInAction;

@@ -19,7 +19,7 @@ const GatheringImage = ({ id }: IGatheringImageProps) => {
       <DeadlineTag registrationEnd={dayjs(data?.registrationEnd)} />
       <Image
         src={data.image || "/images/gathering_default.jpeg"}
-        alt="gathering-image"
+        alt={`모임-[${data.name}] 이미지`}
         fill
         sizes="(max-width: 768px) 90vw, 40vw"
         className="object-cover"

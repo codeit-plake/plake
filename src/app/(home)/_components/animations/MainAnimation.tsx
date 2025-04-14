@@ -3,8 +3,16 @@
 import dynamic from "next/dynamic";
 import { memo, useEffect, useState } from "react";
 
-const Lottie = dynamic(() => import("lottie-light-react"), { ssr: false });
+import LoadingSpinner from "@/components/common/LoadingSpinner";
 
+const Lottie = dynamic(() => import("lottie-light-react"), {
+  loading: () => (
+    <div className="flex h-[450px] w-[500px] items-center justify-center bg-gray-200 sm:h-[600px] md:h-full">
+      <LoadingSpinner size="lg" />
+    </div>
+  ),
+  ssr: false,
+});
 interface IMainAnimationProps {
   type: "online" | "offline";
 }

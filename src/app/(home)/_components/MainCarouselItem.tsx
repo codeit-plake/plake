@@ -15,13 +15,14 @@ const MainCarouselItem = ({ gathering }: IMainCarouselItemProps) => {
       href={`/gathering/detail/${gathering.id}`}
       className="flex flex-col gap-2"
     >
-      <div className="relative h-[150px] overflow-hidden rounded-lg md:h-[200px] lg:h-[250px]">
+      <div className="relative h-[150px] overflow-hidden rounded-lg bg-gray-200 md:h-[200px] lg:h-[250px]">
         <Image
           src={gathering.image || "/images/gathering_default.jpeg"}
-          alt="carousel-item"
+          alt={`gathering image - [${gathering.name}]`}
           fill
           sizes="(max-width: 768px) 150px, (max-width: 1024px) 240px, 260px"
           className="object-cover transition-all duration-300 hover:scale-110"
+          priority
         />
       </div>
       <p className="line-clamp-1 font-medium text-gray-900">{gathering.name}</p>

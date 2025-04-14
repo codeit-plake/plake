@@ -32,6 +32,8 @@ const userSignInAction = async (_: any, formData: FormData) => {
     const res = await response.json();
     await setCookieOfToken(res.token);
 
+    console.log({ res });
+
     // 로그인 성공 시 유저 정보 확인
     const chkResult = await userCheckAction();
 

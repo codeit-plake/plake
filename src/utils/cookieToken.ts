@@ -8,7 +8,7 @@ export const setCookieOfToken = async (token: string): Promise<void> => {
     value: token,
     httpOnly: true,
     path: "/",
-    maxAge: 60 * 60, // 1시간
+    maxAge: 60 * 60, // 1시간.
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
   });

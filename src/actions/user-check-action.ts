@@ -21,16 +21,19 @@ const userCheckAction = async (token: string) => {
     // 유저 정보 받아와서 image null 처리
     const resUser: IUser = await response.json();
     resUser.image = resUser.image || "";
+
     return {
       status: true,
       user: resUser,
       error: "",
+      token: token,
     };
   } catch (err) {
     return {
       status: false,
       user: null,
       error: `${(err as Error).message}`,
+      token: null,
     };
   }
 };

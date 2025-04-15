@@ -54,22 +54,22 @@
 
 ```bash
 .github                          # GitHub Actions를 통한 CI/CD 자동화 설정
-├── workflows/ 
-│   └── pr-automation.yml        # PR 생성 시 자동 라벨링, assign 등 자동화 워크플로우 
-│   └── pr-quailty-checks.yml    # PR 품질 체크 (예: lint, test, build 등)
-├── .husky/                      # Husky 훅 설정
-│   └── pre-commit               # 커밋 전 실행되는 스크립트 (예: lint-staged)
-├── .storybook                   # Storybook 설정 디렉토리 (컴포넌트 문서화 및 시각화)
-├── coverage                     # 테스트 커버리지 리포트가 생성되는 디렉토리
-├── public/             
-│   └── images/                  # 정적 이미지 파일
-│   └── animations/              # Lottie 등 애니메이션 파일
-├── .eslintrc.json               # ESLint 설정 파일 (코드 스타일, 문법 체크)
-├── .prettierrc                  # Prettier 설정 파일 (코드 포맷팅)
-├── jest.config.ts               # Jest 테스트 설정 파일
-├── jest.setup.ts                # 테스트 전 필요한 설정을 초기화하는 파일
-├── sentry.edge.config.ts        # Sentry 엣지 환경용 설정 파일
-├── sentry.server.config.ts      # Sentry 서버 환경용 설정 파일
+└── workflows/ 
+    └── pr-automation.yml        # PR 생성 시 자동 라벨링, assign 등 자동화 워크플로우 
+    └── pr-quailty-checks.yml    # PR 품질 체크 (예: lint, test, build 등)
+.husky/                          # Husky 훅 설정
+└── pre-commit                   # 커밋 전 실행되는 스크립트 (예: lint-staged)
+.storybook                       # Storybook 설정 디렉토리 (컴포넌트 문서화 및 시각화)
+coverage                         # 테스트 커버리지 리포트가 생성되는 디렉토리
+public/             
+└── images/                      # 정적 이미지 파일
+└── animations/                  # Lottie 등 애니메이션 파일
+.eslintrc.json                   # ESLint 설정 파일 (코드 스타일, 문법 체크)
+.prettierrc                      # Prettier 설정 파일 (코드 포맷팅)
+jest.config.ts                   # Jest 테스트 설정 파일
+jest.setup.ts                    # 테스트 전 필요한 설정을 초기화하는 파일
+sentry.edge.config.ts            # Sentry 엣지 환경용 설정 파일
+sentry.server.config.ts          # Sentry 서버 환경용 설정 파일
 src/
 ├── actions/                     # 서버 액션 디렉토리 (예: 로그인, 회원가입 등 서버 관련 로직)
 ├── app/                         # App Router 기반 페이지
@@ -100,9 +100,9 @@ src/
 ├── constants/                   # 상수 정의
 ├── schemas/                     # Zod 기반 스키마 정의 (유효성 검사용)
 ├── stores/                      # Zustand 스토어
-├── assets/                      # 빌드 타임에 필요한 이미지, 폰트 등 정적 에셋
+└── assets/                      # 빌드 타임에 필요한 이미지, 폰트 등 정적 에셋
 
- ```
+```
 
 <br />
 

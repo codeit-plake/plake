@@ -32,7 +32,9 @@ const GatheringDetailInformation = ({
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-1">
             <p className="line-clamp-2 pr-3 text-lg font-semibold">{name}</p>
-            <p className="text-sm font-medium text-gray-700">{location}</p>
+            <p className="text-sm font-medium text-gray-700">
+              {location === "홍대입구" ? "온라인" : location}
+            </p>
           </div>
           <DateTimeTag date={dayjs(dateTime)} />
         </div>

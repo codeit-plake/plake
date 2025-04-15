@@ -18,6 +18,7 @@ import useFavorite from "@/hooks/useFavorite";
 import { useModal } from "@/hooks/useModal";
 import { LoginFormSchema } from "@/schemas/loginJoinSchema";
 import useUserStore from "@/stores/useUserStore";
+import { setCookieOfToken } from "@/utils/cookieToken";
 
 import {
   IRegisterWithValidation,
@@ -68,12 +69,16 @@ const LoginForm = () => {
       }
       setIsSubmitting(false);
     } else if (state && state.status && state.user) {
-      setUserState(state.user);
-
-      // 로그인 유저의 즐겨찾기 목록 가져오기
-      setFavoriteInitValue(state.user?.email);
-
-      router.replace("/");
+      setCookieOfToken(state.token)
+        .then(() => {
+          setUserState(state.user!);
+          setFavoriteInitValue(state.user!.email);
+          router.replace("/");
+        })
+        .catch(error => {
+          setAlertMessage("쿠키 설정 오류: " + error.message);
+          onOpen();
+        });
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

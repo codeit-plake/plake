@@ -16,7 +16,8 @@
 다양한 사람들이 다양한 취미 모임을 **개설, 참여, 공유**하며 일상 속 즐거움을 발견할 수 있는 웹 서비스입니다.
 
 > **📆 프로젝트 기간:** 2025.02.28 ~ 2025.04/15 (5주)  <br />
-> **🔗 배포 링크:** [https://plake.site](https://plake.site)
+> **🔗 배포 링크:** [https://plake.site](https://plake.site)  <br />
+> **🎬 시연 영상:** [시연 영상](https://drive.google.com/file/d/11e6MJba2hqH8W9CDPNcAk5ggJr2i2EdY/view?usp=sharing)  <br />
 
 <br />
 
@@ -155,7 +156,7 @@ src/
 ## 🧪 테스트 커버리지
 
 - ✅ **목표**: 전체 기준 60%
-- ✅ **결과**: 전체 70%, **비즈니스 로직 기준 93%** 달성
+- ✅ **결과**: 전체 69%, **비즈니스 로직 기준 95%** 달성
 
 <img width="984" alt="스크린샷 2025-04-15 오전 9 04 33" src="https://github.com/user-attachments/assets/82831a3d-d885-4aad-8c88-f2e5a8943baa" />
 

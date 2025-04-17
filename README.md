@@ -1,11 +1,11 @@
 ## 목차
-[1. 프로젝트 소개](🏃-Plake)
-[2. 팀 구성](👥-팀-구성)
-[3. 기술 스택](🛠-기술-스택)
-[4. 프로젝트 구조](⚙️-프로젝트-구조)
-[5. 주요 기능](✨-주요-기능)
-[6. 테스트 커버리지](🧪-테스트-커버리지)
-[7. 성능 최적화](🚀-성능-최적화)
+[1. 프로젝트 소개](#Plake) <br/>
+[2. 팀 구성](#팀-구성)  <br/>
+[3. 기술 스택](#기술-스택)  <br/>
+[4. 프로젝트 구조](#프로젝트-구조)  <br/>
+[5. 주요 기능](#주요-기능)  <br/>
+[6. 테스트 커버리지](#테스트-커버리지)  <br/>
+[7. 성능 최적화](#성능-최적화)  <br/>
 
 <br />
 
@@ -15,8 +15,9 @@
 **반복되는 일상 속, 잠시 멈추고 즐기는 시간을 위해**
 다양한 사람들이 다양한 취미 모임을 **개설, 참여, 공유**하며 일상 속 즐거움을 발견할 수 있는 웹 서비스입니다.
 
-> **📆 프로젝트 기간:** 2025.02.28 ~ 2025.04/15 (5주)
-> **🔗 배포 링크:** [https://plake.site](https://plake.site)
+> **📆 프로젝트 기간:** 2025.02.28 ~ 2025.04/15 (5주)  <br />
+> **🔗 배포 링크:** [https://plake.site](https://plake.site)  <br />
+> **🎬 시연 영상:** [시연 영상](https://drive.google.com/file/d/11e6MJba2hqH8W9CDPNcAk5ggJr2i2EdY/view?usp=sharing)  <br />
 
 <br />
 
@@ -54,22 +55,22 @@
 
 ```bash
 .github                          # GitHub Actions를 통한 CI/CD 자동화 설정
-├── workflows/ 
-│   └── pr-automation.yml        # PR 생성 시 자동 라벨링, assign 등 자동화 워크플로우 
-│   └── pr-quailty-checks.yml    # PR 품질 체크 (예: lint, test, build 등)
-├── .husky/                      # Husky 훅 설정
-│   └── pre-commit               # 커밋 전 실행되는 스크립트 (예: lint-staged)
-├── .storybook                   # Storybook 설정 디렉토리 (컴포넌트 문서화 및 시각화)
-├── coverage                     # 테스트 커버리지 리포트가 생성되는 디렉토리
-├── public/             
-│   └── images/                  # 정적 이미지 파일
-│   └── animations/              # Lottie 등 애니메이션 파일
-├── .eslintrc.json               # ESLint 설정 파일 (코드 스타일, 문법 체크)
-├── .prettierrc                  # Prettier 설정 파일 (코드 포맷팅)
-├── jest.config.ts               # Jest 테스트 설정 파일
-├── jest.setup.ts                # 테스트 전 필요한 설정을 초기화하는 파일
-├── sentry.edge.config.ts        # Sentry 엣지 환경용 설정 파일
-├── sentry.server.config.ts      # Sentry 서버 환경용 설정 파일
+└── workflows/ 
+    └── pr-automation.yml        # PR 생성 시 자동 라벨링, assign 등 자동화 워크플로우 
+    └── pr-quailty-checks.yml    # PR 품질 체크 (예: lint, test, build 등)
+.husky/                          # Husky 훅 설정
+└── pre-commit                   # 커밋 전 실행되는 스크립트 (예: lint-staged)
+.storybook                       # Storybook 설정 디렉토리 (컴포넌트 문서화 및 시각화)
+coverage                         # 테스트 커버리지 리포트가 생성되는 디렉토리
+public/             
+└── images/                      # 정적 이미지 파일
+└── animations/                  # Lottie 등 애니메이션 파일
+.eslintrc.json                   # ESLint 설정 파일 (코드 스타일, 문법 체크)
+.prettierrc                      # Prettier 설정 파일 (코드 포맷팅)
+jest.config.ts                   # Jest 테스트 설정 파일
+jest.setup.ts                    # 테스트 전 필요한 설정을 초기화하는 파일
+sentry.edge.config.ts            # Sentry 엣지 환경용 설정 파일
+sentry.server.config.ts          # Sentry 서버 환경용 설정 파일
 src/
 ├── actions/                     # 서버 액션 디렉토리 (예: 로그인, 회원가입 등 서버 관련 로직)
 ├── app/                         # App Router 기반 페이지
@@ -100,9 +101,9 @@ src/
 ├── constants/                   # 상수 정의
 ├── schemas/                     # Zod 기반 스키마 정의 (유효성 검사용)
 ├── stores/                      # Zustand 스토어
-├── assets/                      # 빌드 타임에 필요한 이미지, 폰트 등 정적 에셋
+└── assets/                      # 빌드 타임에 필요한 이미지, 폰트 등 정적 에셋
 
- ```
+```
 
 <br />
 
@@ -135,7 +136,7 @@ src/
 - 주최자는 모임 공유 및 취소, 주최자 외 유저는 참여 및 참여 취소 가능
 - 리뷰는 SSR로 초기 로드 + 클라이언트 페이지네이션으로 추가 로딩
 
-### 찜한 모임 페이지
+### 찜한 모임 페이지
 - 로그인 유저 및 비로그인 유저의 찜 목록 확인
 - 모임에 대한 찜/찜 해제 기능 제공
 
@@ -155,7 +156,7 @@ src/
 ## 🧪 테스트 커버리지
 
 - ✅ **목표**: 전체 기준 60%
-- ✅ **결과**: 전체 70%, **비즈니스 로직 기준 93%** 달성
+- ✅ **결과**: 전체 69%, **비즈니스 로직 기준 95%** 달성
 
 <img width="984" alt="스크린샷 2025-04-15 오전 9 04 33" src="https://github.com/user-attachments/assets/82831a3d-d885-4aad-8c88-f2e5a8943baa" />
 
@@ -167,7 +168,7 @@ src/
 ## 🚀 성능 최적화
 
 - ✅ 이미지 최적화 
-	- next/image 및 AVIF/Webp 포맷 활용
+	- next/image 및 AVIF/Webp 포맷 활용
 - ✅ 번들 최적화 
 	- dynamic import를 사용한 코드 스플리팅
 	- 경량 라이브러리로 대체
